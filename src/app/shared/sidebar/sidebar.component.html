@@ -1,0 +1,108 @@
+<div class="">
+    <div id="sidebar" class="sidebar sidebar-fixed expandable sidebar-light">
+        <div class="sidebar-inner">
+           <div class="ace-scroll flex-grow-1">
+              <ul class="nav has-active-border active-on-right">
+                 <li class="nav-item">
+                    <a routerLink="/dashboard" class="nav-link">
+                    <i class="fa fa-home nav-icon"></i>
+                    <span class="nav-text fadeable">
+                    <span>Dashboard</span>
+                    </span>
+                    </a>
+                 </li>
+                 <li class="nav-item" style="cursor: pointer;">
+                    <a class="nav-link dropdown-toggle collapsed">
+                       <i class="nav-icon fa fa-cube"></i>
+                       <span class="nav-text fadeable">
+                       <span>Product Management</span>
+                       </span>
+                       <b class="caret fa fa-angle-left rt-n90"></b>
+                    </a>
+                    <div class="hideable submenu collapse">
+                       <ul class="submenu-inner">
+                          <li class="nav-item">
+                             <a routerLink="/category" class="nav-link">
+                             <span class="nav-text">
+                             <span>Category</span>
+                             </span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a routerLink="/sub-category" class="nav-link">
+                             <span class="nav-text">
+                             <span>Sub Category</span>
+                             </span>
+                             </a>
+                          </li>
+                       </ul>
+                    </div>
+                    <b class="sub-arrow"></b>
+                 </li>
+                 <li class="nav-item">
+                    <a routerLink="/price-management" class="nav-link">
+                    <i class="fas fa-rupee-sign nav-icon"></i>
+                    <span class="nav-text fadeable">
+                    <span>Price Management</span>
+                    </span>
+                    </a>
+                 </li>
+                 
+                 <li class="nav-item">
+                    <a routerLink="/freight-charges" class="nav-link">
+                    <i class="fas fa-rupee-sign nav-icon"></i>
+                    <span class="nav-text fadeable">
+                    <span>Manage Freight Charges</span>
+                    </span>
+                    </a>
+                 </li>
+                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="fa fa-users nav-icon"></i>
+                    <span class="nav-text fadeable">
+                    <span>User Management</span>
+                    </span>
+                    </a>
+                 </li>
+                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="fa fa-shopping-bag nav-icon"></i>
+                    <span class="nav-text fadeable">
+                    <span>Order Management</span>
+                    </span>
+                    </a>
+                 </li>
+                 <li class="nav-item" style="cursor: pointer;">
+                    <a class="nav-link dropdown-toggle collapsed">
+                       <i class="nav-icon fa fa-cog"></i>
+                       <span class="nav-text fadeable">
+                       <span>Setting</span>
+                       </span>
+                       <b class="caret fa fa-angle-left rt-n90"></b>
+                    </a>
+                    <div class="hideable submenu collapse">
+                       <ul class="submenu-inner">
+                          <li class="nav-item">
+                             <a routerLink="/set-threshold-limit" class="nav-link">
+                             <span class="nav-text">
+                             <span>Set Threshold Limits</span>
+                             </span>
+                             </a>
+                          </li>
+                       </ul>
+                    </div>
+                    <b class="sub-arrow"></b>
+                 </li>
+                 <li class="nav-item" style="cursor: pointer;">
+                  <a (click)="logMeOut()" class="nav-link">
+                  <i class="fa fa-sign-out nav-icon"></i>
+                  <span class="nav-text fadeable">
+                  <span>Logout</span>
+                  </span>
+                  </a>
+               </li>
+              </ul>
+           </div>
+        </div>
+     </div>
+</div>

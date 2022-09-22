@@ -1,0 +1,100 @@
+<div class="body-container">
+    <app-header></app-header>
+    <!-- /.navbar -->
+    <div class="main-container">
+       <app-sidebar></app-sidebar>
+       <!-- /.sidebar -->
+       <div role="main" class="main-content">
+          <div class="page-content container container-plus">
+             <div class="row">
+                <div class="col-sm-12">
+                   <h4 class="pull-left page-title">Category Management</h4>
+                   <ol class="breadcrumb pull-right">
+                      <li> <a routerLink="/add-category"><i class="far fa-plus-square"></i> Add Category</a></li>
+                   </ol>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-md-12">
+                   <div class="panel panel-default">
+                      <div class="panel-heading">
+                         <div class="row">
+                            <div class="col-sm-4">
+                               <div class="form-group">
+                                  <label for="category">Category Name</label>
+                                  <input type="text" placeholder="Category Name" id="category" class="form-control">
+                               </div>
+                            </div>
+                            <div class="col-sm-4">
+                               <div class="form-group">
+                                  <label for="search">Search By Status</label>
+                                  <select class="form-control rm06" name="status">
+                                     <option value="A">Active</option>
+                                     <option value="I">Inactive</option>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-sm-4">
+                               <div class="rm05">
+                                  <button class="btn btn-primary btn-ser" type="submit">Search</button>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="table-responsive">
+                                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                     <thead>
+                                        <tr>
+                                           <th>Category</th>
+                                           <th>Description</th>
+                                           <th>Status</th>
+                                           <th>Action</th>
+                                        </tr>
+                                     </thead>
+                                     <tbody>
+                                        <tr *ngFor="let ctgryItem of categoryItems">
+                                           <td>{{ctgryItem?.category_name}}</td>
+                                           <td>
+                                              <p class="table-dec">.........</p>
+                                           </td>
+                                           <td><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">....</span></td>
+                                           <td>
+                                              <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                              </a>
+                                              <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                              </a>
+                                           </td>
+                                        </tr>
+                                       
+                                     </tbody>
+                                  </table>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- content -->
+          <footer class="footer d-none d-sm-block">
+             <div class="footer-inner bgc-white-tp1">
+                <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                   <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+                </div>
+             </div>
+             <div class="footer-tools">
+                <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                <i class="fa fa-angle-double-up mx-2px text-95"></i>
+                </a>
+             </div>
+          </footer>
+          <!-- footer -->
+       </div>
+    </div>
+ </div>

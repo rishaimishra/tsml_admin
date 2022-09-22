@@ -28,9 +28,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/style.css",
+              "src/assets/css/ace.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/charts.css",
+              "src/assets/css/dataTables.bootstrap4.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/ace.min.js",
+              "src/assets/js/charts.js",
+              "src/assets/js/bootstrap.min.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -103,5 +115,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,0 +1,201 @@
+<div class="body-container">
+      <app-header></app-header>
+    <!-- /.navbar -->
+    <div class="main-container">
+        <app-sidebar></app-sidebar>
+        <!-- /.sidebar -->
+        <div role="main" class="main-content">
+            <div class="page-content container container-plus">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="pull-left page-title">Add Price Management</h4>
+                        <ol class="breadcrumb pull-right">
+                            <li> <a href="product-management.html"><i class="fa fa-angle-double-left"></i> Back</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-check pl-0">
+                                            <input type="checkbox" name="text" id="differentaddress"> <span
+                                                class="list_checkmark" for="differentaddress"></span>
+                                            <label class="form-check-label" for="differentaddress">
+                                                Upload Product Price
+                                            </label>
+                                        </div>
+                                        <div class="different_address">
+                                            <hr class="custom-hr">
+
+
+
+                                            <div class="input-section-check">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="form_box_area">
+                                                            <input type="file" class="form-control-file" id="">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="">
+                                                            <button class="btn btn-primary btn-ser"
+                                                                type="submit">Upload</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="category">Product Name</label>
+                                            <input type="text" placeholder="Category Name" id=""
+                                                class="form-control" value="Ferro Chrome">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="category">Category</label>
+                                            <input type="text" placeholder="Category Name" id=""
+                                                class="form-control" value="High Carbon Ferro Chrome">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="category">Sub Category</label>
+                                            <input type="text" placeholder="Category Name" id=""
+                                                class="form-control" value="High Carbon Ferro Chrome - High Phos">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="category">Sizes Offered</label>
+                                            <select class="form-control rm06" name="status">
+                                                <option value="">10-50</option>
+                                                <option value="">10-70</option>
+                                                <option value="">10-100</option>
+                                                <option value="">10-150</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="category">Basic Price(per MT)</label>
+                                            <input type="text" placeholder="Category Name" id=""
+                                                class="form-control" value="150">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="search">Status</label>
+                                            <select class="form-control rm06" name="status">
+                                                <option value="A">Active</option>
+                                                <option value="I">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="">
+                                            <button class="btn btn-primary btn-ser" type="submit">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="example" class="table table-striped table-bordered"
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product Name</th>
+                                                    <th>Category</th>
+                                                    <th>Sub Category</th>
+                                                    <th>Sizes Offered</th>
+                                                    <th>Basic Price</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>High Carbon Ferro Chrome </td>
+                                                    <td>Ferro Chrome </td>
+                                                    <td>High Carbon Ferro Chrome - High Phos</td>
+                                                    <td>10-50</td>
+                                                    <td>40,000</td>
+                                                    <td><span
+                                                            class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">Active</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a href="#"
+                                                            class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>High Carbon Ferro Chrome </td>
+                                                    <td>Ferro Chrome </td>
+                                                    <td>High Carbon Ferro Chrome - High Phos</td>
+                                                    <td>10-50</td>
+                                                    <td>40,000</td>
+                                                    <td>
+                                                        <span
+                                                            class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">Inactive</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a href="#"
+                                                            class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content -->
+            <footer class="footer d-none d-sm-block">
+                <div class="footer-inner bgc-white-tp1">
+                    <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                        <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+                    </div>
+                </div>
+                <div class="footer-tools">
+                    <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                        <i class="fa fa-angle-double-up mx-2px text-95"></i>
+                    </a>
+                </div>
+            </footer>
+            <!-- footer -->
+        </div>
+    </div>
+</div>
