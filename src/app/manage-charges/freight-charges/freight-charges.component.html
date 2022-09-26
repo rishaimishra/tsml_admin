@@ -22,21 +22,21 @@
                             <div class="col-sm-4">
                                <div class="form-group">
                                   <label for="category">Pickup Form</label>
-                                  <input type="text" placeholder="Plant" id="category" class="form-control">
+                                  <input type="text" [(ngModel)]="pickupValue" placeholder="Plant" id="category" class="form-control">
                                </div>
                             </div>
                             <div class="col-sm-4">
                                <div class="form-group">
                                   <label for="search">Search By Status</label>
-                                  <select class="form-control rm06" name="status">
-                                     <option value="A">Active</option>
-                                     <option value="I">Inactive</option>
+                                  <select (change)="statusValue($event)" class="form-control rm06" name="status">
+                                     <option value="1">Active</option>
+                                     <option value="2">Inactive</option>
                                   </select>
                                </div>
                             </div>
                             <div class="col-sm-4">
                                <div class="rm05">
-                                  <button class="btn btn-primary btn-ser" type="submit">Search</button>
+                                  <button (click)="frieghtChargeFilter()" class="btn btn-primary btn-ser" type="submit">Search</button>
                                </div>
                             </div>
                          </div>
@@ -56,11 +56,12 @@
                                         </tr>
                                      </thead>
                                      <tbody>
-                                        <tr>
-                                           <td>Plant</td>
-                                           <td>Kolkata</td>
-                                           <td>40,000</td>
-                                           <td><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">Active</span></td>
+                                        <tr *ngFor="let freight of freightCharges">
+                                           <td>{{freight?.pickup_from}}</td>
+                                           <td>{{freight?.location}}</td>
+                                           <td>{{freight?.freight_charges}}</td>
+                                           <td *ngIf="freight?.status == 1"><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">Active</span></td>
+                                           <td *ngIf="freight?.status == 2"><span class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">Inactive</span></td>
                                            <td>
                                               <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -70,22 +71,7 @@
                                               </a>
                                            </td>
                                         </tr>
-                                        <tr>
-                                           <td>Plant</td>
-                                           <td>Kolkata</td>
-                                           <td>40,000</td>
-                                           <td>
-                                              <span class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">Inactive</span>
-                                           </td>
-                                           <td>
-                                              <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                              </a>
-                                              <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                              </a>
-                                           </td>
-                                        </tr>
+                                      
                                      </tbody>
                                   </table>
                                </div>

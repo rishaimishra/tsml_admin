@@ -1,6 +1,7 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +40,8 @@ import { AuthIntercepto } from './service/auth.interceptor';
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthIntercepto, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthIntercepto, multi: true},
+    Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
