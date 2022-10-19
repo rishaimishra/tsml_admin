@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CategoryService } from 'src/app/service/category.service';
 
@@ -13,7 +14,7 @@ export class CategoryComponent implements OnInit {
 
 
   constructor(private _category: CategoryService,
-    private _spiner: NgxSpinnerService) { }
+    private _spiner: NgxSpinnerService, private _router: Router) { }
 
   ngOnInit(): void {
     this.categoryList();
@@ -24,6 +25,10 @@ export class CategoryComponent implements OnInit {
     this._category.getCatetoryList().subscribe((res: any) => {
       if (res.status == 1) {
         this.categoryItems = res.result;
+        this._spiner.hide();
+      }
+      if (res.status == 'Authorization Token not found') {
+        this._router.navigate(['']);
         this._spiner.hide();
       }
     }, err => {

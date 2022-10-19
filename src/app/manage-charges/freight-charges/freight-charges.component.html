@@ -63,10 +63,10 @@
                                            <td *ngIf="freight?.status == 1"><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">Active</span></td>
                                            <td *ngIf="freight?.status == 2"><span class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">Inactive</span></td>
                                            <td>
-                                              <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                              <a class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                                               </a>
-                                              <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                              <a (click)="deleteFreight(freight?.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                               </a>
                                            </td>

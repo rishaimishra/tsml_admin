@@ -38,6 +38,7 @@
               "node_modules/ngx-spinner/animations/square-jelly-box.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/ace.min.js",
               "src/assets/js/charts.js",
               "src/assets/js/bootstrap.min.js"
