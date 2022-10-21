@@ -27,7 +27,7 @@ export class CategoryComponent implements OnInit {
         this.categoryItems = res.result;
         this._spiner.hide();
       }
-      if (res.status == 'Authorization Token not found') {
+      if (res.status == 'Token has Expired') {
         this._router.navigate(['']);
         this._spiner.hide();
       }

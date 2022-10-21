@@ -27,7 +27,8 @@ export class CategoryService {
   getfreightCharges() {
     return this._http.get( this.BesUrl+ '/admin/get-freights');
   };
-  // getfreightByFilter() {
-  //   return this._http.get( this.BesUrl+ '/admin/get-freights');
-  // };
+
+  storeCategory(url_paremter: any) {
+    return this._http.post( this.BesUrl+ '/admin/store-category', url_paremter);
+  };
 }

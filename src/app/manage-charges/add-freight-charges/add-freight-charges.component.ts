@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/service/category.service';
 import { ProductsService } from 'src/app/service/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-freight-charges',
@@ -84,19 +85,35 @@ export class AddFreightChargesComponent implements OnInit {
     })
   }
   deleteFreight(id: any) {
-    this._spinner.show();
-    let apiKey = '/admin/delete-freight';
-    let apiUrl = apiKey+ '/'+ id;
-    this._product.getMethod(apiUrl).subscribe((res: any) => {
-      console.log(res);
-      if (res.status == 1 && res.message == 'Freight deleted successfully.') {
-        this._spinner.hide();
-        this.toater.success('Deleted');
-        this.getAllFreightCharges();
-      } 
-      else {
-        this.toater.error(res.message);
-        this._spinner.hide();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._spinner.show();
+        let apiKey = '/admin/delete-freight';
+        let apiUrl = apiKey+ '/'+ id;
+        this._product.getMethod(apiUrl).subscribe((res: any) => {
+          console.log(res);
+          if (res.status == 1 && res.message == 'Freight deleted successfully.') {
+            this._spinner.hide();
+            // this._toaster.success('Deleted');
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            this.getAllFreightCharges();
+          } else {
+            this.toater.error(res.message);
+            this._spinner.hide();
+          }
+        })
       }
     })
   }

@@ -9,8 +9,8 @@
              <div class="row">
                 <div class="col-sm-12">
                    <h4 class="pull-left page-title">Add Category</h4>
-                   <ol class="breadcrumb pull-right">
-                      <li> <a><i class="fa fa-angle-double-left"></i> Back</a></li>
+                   <ol class="breadcrumb pull-right pointer">
+                      <li (click)="goBack()"> <a><i class="fa fa-angle-double-left"></i> Back</a></li>
                    </ol>
                 </div>
              </div>
@@ -22,27 +22,27 @@
                             <div class="col-sm-4">
                                <div class="form-group">
                                   <label for="category">Category</label>
-                                  <input type="text" placeholder="Category Name" id="category" class="form-control" value="Chrome Ore ">
+                                  <input type="text" [(ngModel)]="categoryName" placeholder="Category Name" id="category" class="form-control" value="Chrome Ore ">
                                </div>
                             </div>
                             <div class="col-sm-4">
                                <div class="form-group">
                                   <label for="search">Status</label>
-                                  <select class="form-control rm06" name="status">
-                                     <option value="A">Active</option>
-                                     <option value="I">Inactive</option>
+                                  <select (change)="selectStatus($event)" class="form-control rm06" name="status">
+                                     <option value="1">Active</option>
+                                     <option value="2">Inactive</option>
                                   </select>
                                </div>
                             </div>
                             <div class="col-sm-12">
                                <div class="form-group">
                                   <label for="category">Description</label>
-                                  <textarea class="form-control" rows="4" placeholder="Ranked among the top-seven global chrome alloy producers, we are the leading manufacturers of High Carbon Ferro Chrome in India. We produce various grades of Ferro Chrome"></textarea>
+                                  <textarea class="form-control" [(ngModel)]="description" rows="4" placeholder="Ranked among the top-seven global chrome alloy producers, we are the leading manufacturers of High Carbon Ferro Chrome in India. We produce various grades of Ferro Chrome"></textarea>
                                </div>
                             </div>
                             <div class="col-sm-12">
                                <div class="">
-                                  <button class="btn btn-primary btn-ser" type="submit">Save</button>
+                                  <button class="btn btn-primary btn-ser" (click)="saveCategory()" type="button">Save</button>
                                </div>
                             </div>
                          </div>
