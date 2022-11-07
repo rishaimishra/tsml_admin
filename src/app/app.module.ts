@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthIntercepto } from './service/auth.interceptor';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -39,6 +40,7 @@ import { AuthIntercepto } from './service/auth.interceptor';
     NgxSpinnerModule.forRoot(),
 
   ],
+  exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthIntercepto, multi: true},
     Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],

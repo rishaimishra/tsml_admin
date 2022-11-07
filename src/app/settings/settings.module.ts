@@ -5,16 +5,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../auth/auth.guard';
+import { SetThresholdComponent } from './set-threshold/set-threshold.component';
 
 const routes: Routes = [
   {
     path: 'set-threshold-limit', component: SetThresholdLimitsComponent, canActivate: [AuthGuard]
+    
   },
+  {
+    path: 'set-threshold', component: SetThresholdComponent, canActivate: [AuthGuard]
+  }
 ]
 
 @NgModule({
   declarations: [
-    SetThresholdLimitsComponent
+    SetThresholdLimitsComponent,
+    SetThresholdComponent
   ],
   imports: [
     CommonModule,

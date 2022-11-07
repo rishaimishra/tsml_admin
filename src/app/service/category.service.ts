@@ -17,6 +17,9 @@ export class CategoryService {
     return this._http.get(this.BesUrl + url_paremter);
   };
   
+  productList () {
+    return this._http.get( this.BesUrl+ '/admin/get-product-list');
+  };
   getCatetoryList() {
     return this._http.get( this.BesUrl+ '/admin/category-list');
   };
@@ -30,5 +33,11 @@ export class CategoryService {
 
   storeCategory(url_paremter: any) {
     return this._http.post( this.BesUrl+ '/admin/store-category', url_paremter);
+  };
+
+  // http://localhost/TSML/api/admin/get-product-basic-price
+
+  basicPriceOfProduct(url_paremter: any) {
+    return this._http.post( this.BesUrl+ '/admin/get-product-basic-price', url_paremter);
   };
 }

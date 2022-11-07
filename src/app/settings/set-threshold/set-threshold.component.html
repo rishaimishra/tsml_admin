@@ -1,0 +1,121 @@
+<body>
+    <div class="body-container">
+      <app-header></app-header>
+       <!-- /.navbar -->
+       <div class="main-container">
+         <app-sidebar></app-sidebar>
+          <!-- /.sidebar -->
+          <div role="main" class="main-content">
+             <div class="page-content container container-plus">
+                <div class="row">
+                   <div class="col-sm-12">
+                      <h4 class="pull-left page-title">Set Threshold Limits</h4>
+                      <ol class="breadcrumb pull-right">
+                         <li> <a href="#"><i class="fa fa-angle-double-left"></i> Back</a></li>
+                      </ol>
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="col-md-12">
+                      <div class="panel panel-default">
+                         <div class="panel-body">
+                            <div class="row">
+                               <div class="col-sm-4">
+                                 <div class="form-group">
+                                    <label for="category">Product Name</label>
+                                    <select class="form-control rm06" (change)="selectProduct($event)" name="status">
+                                       <option value="">--Select--</option>
+                                       <option value="{{proItem.product_id}}" *ngFor="let proItem of productList">{{proItem.product_title}}</option>
+                                    </select>
+                                 </div>
+                               </div>
+                               <div class="col-sm-4">
+                                 <div class="form-group">
+                                    <label for="category">Categories</label>
+                                    <select class="form-control rm06" (change)="selectCat($event)" name="status">
+                                       <option value="">--Select--</option>
+                                       <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList">{{catItem.category_name}}</option>
+                                    </select>
+                                 </div>
+                               </div>
+                               <div class="col-sm-4">
+                                 <div class="form-group">
+                                    <label for="category">Sub Category</label>
+                                    <select class="form-control rm06" (change)="subCategori($event)" name="status">
+                                       <option value="">--Select--</option>
+                                       <option value="{{item.sub_category_id}}" *ngFor="let item of subCategoriList">{{item.sub_category_name}}</option>
+                                    </select>
+                                 </div>
+                               </div>
+                               <div class="col-sm-4">
+                                  <div class="form-group">
+                                     <label for="category">Sizes Offered</label>
+                                     <select class="form-control rm06" name="status" (change)="getPrice($event)">
+                                        <option value="10-50">10-50</option>
+                                        <option value="10-70">10-70</option>
+                                        <option value="10-100">10-100</option>
+                                        <option value="10-150">10-150</option>
+                                     </select>
+                                  </div>
+                               </div>
+                               <div class="col-sm-4">
+                                  <div class="form-group">
+                                     <label for="">Basic Price</label>
+                                     <input type="number" placeholder="" id="" class="form-control" value="113847.5">
+                                  </div>
+                               </div>
+                               <div class="col-sm-4">
+                                  <div class="form-group">
+                                     <label for="">Price Premium</label>
+                                     <input type="number" placeholder="" id="" class="form-control" value="0">
+                                  </div>
+                               </div>
+                               <div class="col-sm-4">
+                                  <div class="form-group">
+                                     <label for="">Misc Expense</label>
+                                     <input type="number" placeholder="" id="" class="form-control" value="0">
+                                  </div>
+                               </div>
+                               <div class="col-sm-4">
+                                  <div class="form-group">
+                                     <label for="">Interest Rate ( % )</label>
+                                     <input type="number" placeholder="" id="" class="form-control" value="0">
+                                  </div>
+                               </div>
+                               <div class="col-sm-4">
+                                  <div class="form-group">
+                                     <label for="">KAM Discount</label>
+                                     <input type="number" placeholder="" id="" class="form-control" value="0">
+                                  </div>
+                               </div>
+                               <div class="col-sm-12">
+                                  <div class="">
+                                     <a class="btn btn-primary btn-ser" href="set-threshold-limits.html">Save</a>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <!-- content -->
+             <footer class="footer d-none d-sm-block">
+                <div class="footer-inner bgc-white-tp1">
+                   <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                      <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+                   </div>
+                </div>
+                <div class="footer-tools">
+                   <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                   <i class="fa fa-angle-double-up mx-2px text-95"></i>
+                   </a>
+                </div>
+             </footer>
+             <!-- footer -->
+          </div>
+       </div>
+    </div>
+    <!-- include common vendor scripts used in demo pages -->
+
+ </body>
