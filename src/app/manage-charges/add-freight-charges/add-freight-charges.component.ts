@@ -17,8 +17,9 @@ export class AddFreightChargesComponent implements OnInit {
   states: any;
   freightCharge: any;
   pickUp: any;
-  selectState: any;
+  pickLocation: any;
   status: any;
+  destinationLocation:any;
 
 
   constructor(private _category: CategoryService,
@@ -30,11 +31,15 @@ export class AddFreightChargesComponent implements OnInit {
     this.getAllFreightCharges();
     this.getState();
   }
+
+  selectDestination(event:any) {
+    this.destinationLocation = event.target.value;
+  }
   pickUpfrom(event: any) {
     this.pickUp = event.target.value;
   };
-  selectedState(event: any) {
-    this.selectState = event.target.value;
+  pickupLocation(event: any) {
+    this.pickLocation = event.target.value;
   };
   selectStatus(event: any) {
     this.status = event.target.value;
@@ -44,27 +49,39 @@ export class AddFreightChargesComponent implements OnInit {
     this._spinner.show();
     let freightReq = {
       "pickup_from": this.pickUp,
-      "location": this.selectState,
+      "pickup_location": this.pickLocation,
+      "destation_location": this.destinationLocation,
       "freight_charges": this.freightCharge,
       "status": this.status,
     };
-    console.log(freightReq);
-    if (freightReq) {
+
       this._product.storeFrieght(freightReq).subscribe((res: any) => {
-        console.log(res);
+        this._spinner.hide();
         if(res.message == 'New freights added successfully') {
-          this.toater.success(res.message);
-          this._spinner.hide();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            text: 'Added successully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
           this.getAllFreightCharges();
         } 
-        if (res.message == 'error') {
-          this.toater.success(res.message);
+        if (res.message == 'error' && res.status == 0) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'All field are required!',
+          })
           this._spinner.hide();
         }
       }, err => {
         console.log(err);
+        this._spinner.hide();
+        // this.toater.success(res.result);
       })
-    }
+    
   }
   goBack() {
     this._location.back();

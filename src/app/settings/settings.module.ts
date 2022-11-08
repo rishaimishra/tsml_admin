@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../auth/auth.guard';
 import { SetThresholdComponent } from './set-threshold/set-threshold.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { EditThresholdPriceComponent } from './edit-threshold-price/edit-threshold-price.component';
 
 const routes: Routes = [
   {
@@ -14,18 +16,23 @@ const routes: Routes = [
   },
   {
     path: 'set-threshold', component: SetThresholdComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-threshold/:id', component: EditThresholdPriceComponent, canActivate: [AuthGuard]
   }
 ]
 
 @NgModule({
   declarations: [
     SetThresholdLimitsComponent,
-    SetThresholdComponent
+    SetThresholdComponent,
+    EditThresholdPriceComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    BrowserModule,
     ReactiveFormsModule,
     SharedModule
   ]

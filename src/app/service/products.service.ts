@@ -14,7 +14,7 @@ export class ProductsService {
   getMethod(url_paremter: any) {
     return this._http.get(this.BesUrl + url_paremter);
   };
-  // https://beas.in/mje-shop/api/admin/store-freight
+
   storeFrieght(url_paremter: any) {
     return this._http.post(this.BesUrl + '/admin/store-freight', url_paremter);
   };
@@ -22,4 +22,24 @@ export class ProductsService {
   storeDailyProd(reqParameter: any) {
     return this._http.post(this.BesUrl + '/admin/prod-qty-upload-admin', reqParameter);
   };
+
+
+  showBasicPrice(reqParameter: any) {
+    return this._http.post(this.BesUrl + '/admin/get-product-basic-price', reqParameter);
+  };
+
+  setThreshold(reqParameter: any) {
+    return this._http.post(this.BesUrl + '/admin/store-pro-price', reqParameter);
+  };
+
+  getthresholdList() {
+    return this._http.get(this.BesUrl + '/admin/get-threshold-price-admin');
+  };
+
+  updateThreshold(reqParameter: any) {
+    return this._http.post(this.BesUrl + '/admin/update-threshold-price-admin', reqParameter);
+  };
+
+  //http://localhost/TSML/api/admin/get-threshold-price-details-admin/1
+
 }

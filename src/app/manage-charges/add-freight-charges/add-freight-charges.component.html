@@ -18,7 +18,7 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-check pl-0">
                                             <input type="checkbox" name="text" id="differentaddress"> <span
@@ -48,7 +48,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row mt-4">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -75,9 +75,18 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="category">Location</label>
-                                            <select (change)="selectedState($event)" class="form-control rm06" name="status">
-                                                <option value="">Select state..</option>
+                                            <label for="category">Pickup Location</label>
+                                            <select (change)="pickupLocation($event)" class="form-control rm06" name="status">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let state of states" value="{{state?.name}}">{{state?.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="category">Destination Location</label>
+                                            <select (change)="selectDestination($event)" class="form-control rm06" name="status">
+                                                <option value="">--Select--</option>
                                                 <option *ngFor="let state of states" value="{{state?.name}}">{{state?.name}}</option>
                                             </select>
                                         </div>
@@ -93,7 +102,7 @@
                                         <div class="form-group">
                                             <label for="search">Status</label>
                                             <select (change)="selectStatus($event)" class="form-control rm06" name="status">
-                                                <option value="" checked>Select...</option>
+                                                <option value="" checked>--Select--</option>
                                                 <option value="1">Active</option>
                                                 <option value="2">Inactive</option>
                                             </select>

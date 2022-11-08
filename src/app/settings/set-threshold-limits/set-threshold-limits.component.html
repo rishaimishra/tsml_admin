@@ -52,7 +52,7 @@
                                         <th>Sub Category</th>
                                         <th>Sizes Offered</th>
                                         <th>Basic Price</th>
-                                        <th>Cam Premium (%)</th>
+                                        <th>Price Premium (%)</th>
                                         <th>Prod Premium/Disc (%)</th>
                                         <th>Interest Credit (%)</th>
                                         <th>Special Discount (%)</th>
@@ -60,18 +60,18 @@
                                      </tr>
                                   </thead>
                                   <tbody>
-                                     <tr>
-                                        <td>Ferro Chrome</td>
-                                        <td>HC Ferro Chrome</td>
-                                        <td>High Carbon Ferro Chrome - High Phos</td>
-                                        <td>10-50</td>
-                                        <td>113847.5</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
-                                        <td>9</td>
-                                        <td>0.00</td>
+                                     <tr *ngFor="let priceItem of thresholdItems">
+                                        <td>{{priceItem.product_title}}</td>
+                                        <td>{{priceItem.category_name}}</td>
+                                        <td>{{priceItem.sub_category_name}}</td>
+                                        <td>{{priceItem.size}}</td>
+                                        <td>{{priceItem.basic_price}}</td>
+                                        <td>{{priceItem.Price_Premium}}</td>
+                                        <td>{{priceItem.Misc_Expense}}</td>
+                                        <td>{{priceItem.Interest_Rate}}</td>
+                                        <td>{{priceItem.CAM_Discount}}</td>
                                         <td>
-                                           <a  class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                           <a [routerLink]="['/edit-threshold',priceItem.threshold]" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                            </a>
                                            <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
@@ -79,25 +79,7 @@
                                            </a>
                                         </td>
                                      </tr>
-                                     <tr>
-                                        <td>Ferro Chrome</td>
-                                        <td>HC Ferro Chrome</td>
-                                        <td>High Carbon Ferro Chrome - High Phos</td>
-                                        <td>10-50</td>
-                                        <td>113847.5</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
-                                        <td>9</td>
-                                        <td>0.00</td>
-                                        <td>
-                                           <a  class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                           </a>
-                                           <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                           </a>
-                                        </td>
-                                     </tr>
+                                     
                                   </tbody>
                                </table>
                             </div>

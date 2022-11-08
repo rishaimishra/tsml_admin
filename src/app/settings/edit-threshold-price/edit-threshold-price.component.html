@@ -15,7 +15,7 @@
                       </ol>
                    </div>
                 </div>
-                <form [formGroup]="setthresholdForm">
+      
                 <div class="row">
                    <div class="col-md-12">
                       <div class="panel panel-default">
@@ -24,9 +24,9 @@
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Product Name</label>
-                                    <select class="form-control rm06" (change)="selectProduct($event)" name="status">
+                                    <select class="form-control rm06" (change)="selectProduct($event)"  name="status">
                                        <option value="">--Select--</option>
-                                       <option value="{{proItem.product_id}}" *ngFor="let proItem of productList">{{proItem.product_title}}</option>
+                                       <option value="{{proItem.product_id}}" *ngFor="let proItem of productList" [selected]="editdataInfo?.pro_id" >{{proItem.product_title}}</option>
                                     </select>
                                  </div>
                                </div>
@@ -35,23 +35,24 @@
                                     <label for="category">Categories</label>
                                     <select class="form-control rm06" (change)="selectCat($event)" name="status">
                                        <option value="">--Select--</option>
-                                       <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList">{{catItem.category_name}}</option>
+                                       <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList" [selected]="editdataInfo?.cat_id">{{catItem.category_name}}</option>
                                     </select>
                                  </div>
                                </div>
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Sub Category</label>
-                                    <select class="form-control rm06" (change)="subCategori($event)" name="status">
+                                    <select class="form-control rm06" (change)="subCategori($event)"  name="status">
                                        <option value="">--Select--</option>
-                                       <option value="{{item.sub_category_id}}" *ngFor="let item of subCategoriList">{{item.sub_category_name}}</option>
+                                       <option value="{{item.sub_category_id}}" *ngFor="let item of subCategoriList" [selected]="editdataInfo?.sub_cat_id">{{item.sub_category_name}}</option>
                                     </select>
                                  </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="category">Sizes Offered</label>
-                                     <select class="form-control rm06" name="status" (change)="getPrice($event)">
+                                     <select class="form-control rm06" name="status" (change)="getPrice($event)" >
+                                        <option value="">--Select--</option>
                                         <option value="10-50">10-50</option>
                                         <option value="10-70">10-70</option>
                                         <option value="10-100">10-100</option>
@@ -62,31 +63,31 @@
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Basic Price</label>
-                                     <input type="number" placeholder="" formControlName="BPT_Price" id="" class="form-control" value="0">
+                                     <input type="number" placeholder="" [(ngModel)]="basicPrice" id="" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Price Premium</label>
-                                     <input type="number" placeholder="" formControlName="Price_Premium" id="" class="form-control" value="0">
+                                     <input type="number" placeholder="" [(ngModel)]="premiumPrice"  id="" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Misc Expense</label>
-                                     <input type="number" placeholder="" formControlName="Misc_Expense" id="" class="form-control" value="0">
+                                     <input type="number" placeholder="" [(ngModel)]="miscExp" id="" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Interest Rate ( % )</label>
-                                     <input type="number" placeholder="" id="" formControlName="Interest_Rate" class="form-control" value="0">
+                                     <input type="number" placeholder="" [(ngModel)]="InterestRate" id=""  class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">KAM Discount</label>
-                                     <input type="number" placeholder=""  formControlName="CAM_Discount" id="" class="form-control" value="0">
+                                     <input type="number" placeholder="" [(ngModel)]="kamDiscount"  id="" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-12">
@@ -99,7 +100,7 @@
                       </div>
                    </div>
                 </div>
-               </form>
+             
              </div>
              <!-- content -->
              <footer class="footer d-none d-sm-block">
@@ -121,3 +122,4 @@
     <!-- include common vendor scripts used in demo pages -->
 
  </body>
+
