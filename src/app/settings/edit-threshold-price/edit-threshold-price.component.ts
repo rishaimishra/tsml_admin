@@ -73,15 +73,15 @@ export class EditThresholdPriceComponent implements OnInit {
       console.log(res);
       if (res.status == 1 && res.message == 'success.') {
         this.editdataInfo = res.result;
-        this.selectCat( this.editdataInfo['cat_id']);
         this.basicPrice = this.editdataInfo['bpt_price'];
         this.premiumPrice = this.editdataInfo['price_premium'];
         this.productName = this.editdataInfo['pro_id'];
         this.miscExp = this.editdataInfo['misc_expense'];
         this.InterestRate = this.editdataInfo['interest_rate'];
         this.kamDiscount = this.editdataInfo['cam_discount'];
-  
-        console.log('data',res.result);
+        
+        this.selectCat(this.editdataInfo['cat_id']);
+        console.log('data',this.basicPrice);
       }
     })
   }
@@ -99,6 +99,7 @@ export class EditThresholdPriceComponent implements OnInit {
   selectCat(event: any) {
     this.loader.show();
     this.categorieId = event.target.value;
+    console.log('catId',this.categorieId);
     let apiurl = '/admin/get-sub-category-list/' + this.categorieId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
