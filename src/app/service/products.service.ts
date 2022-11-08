@@ -18,4 +18,8 @@ export class ProductsService {
   storeFrieght(url_paremter: any) {
     return this._http.post(this.BesUrl + '/admin/store-freight', url_paremter);
   };
+
+  storeDailyProd(reqParameter: any) {
+    return this._http.post(this.BesUrl + '/admin/prod-qty-upload-admin', reqParameter);
+  };
 }

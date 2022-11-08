@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { FgStockAssumptionComponent } from './fg-stock-assumption/fg-stock-assumption.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'add-sub-category', component: AddSubCategoryComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'fg-stock', component: FgStockAssumptionComponent, canActivate: [AuthGuard]
   }
 ]
 
@@ -31,7 +35,8 @@ const routes: Routes = [
     CategoryComponent,
     SubCategoryComponent,
     AddCategoryComponent,
-    AddSubCategoryComponent
+    AddSubCategoryComponent,
+    FgStockAssumptionComponent
   ],
   imports: [
     CommonModule,
