@@ -35,7 +35,7 @@
                                     <label for="category">Categories</label>
                                     <select class="form-control rm06" (change)="selectCat($event)" name="status">
                                        <option value="">--Select--</option>
-                                       <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList" [selected]="editdataInfo?.cat_id">{{catItem.category_name}}</option>
+                                       <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList" [(ngModel)]="catItem.category_name">{{catItem.category_name}}</option>
                                     </select>
                                  </div>
                                </div>
@@ -51,7 +51,7 @@
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="category">Sizes Offered</label>
-                                     <select class="form-control rm06" name="status" (change)="getPrice($event)" >
+                                     <select class="form-control rm06" name="status" [(ngModel)]="editdataInfo.size" (change)="getPrice($event)" >
                                         <option value="">--Select--</option>
                                         <option value="10-50">10-50</option>
                                         <option value="10-70">10-70</option>
