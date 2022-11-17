@@ -1,0 +1,128 @@
+<div class="body-container">
+    <app-header></app-header>
+    <!-- /.navbar -->
+    <div class="main-container">
+       <app-sidebar></app-sidebar>
+       <!-- /.sidebar -->
+       <div role="main" class="main-content">
+          <div class="page-content container container-plus">
+             <div class="row">
+                <div class="col-sm-12">
+                   <h4 class="pull-left page-title">View PO Details</h4>
+                </div>
+             </div>
+             <div class="row mt-2">
+                <div class="col-md-12">
+                   <div class="panel panel-default">
+                      
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <h4>Purchass Order</h4>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="sec_po">
+                                  <p>To</p>
+                                  <table class="table table-bordered">
+                                     <tr>
+                                        <td>Company Tata Steel Mining Ltd</td>
+                                     </tr>
+                                  </table>
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="sec_po">
+                                  <p>Customer</p>
+                                  <table class="table table-bordered">
+                                     <tr>
+                                        <td>{{poInfo?.customer_name}}</td>
+                                     </tr>
+                                  </table>
+                               </div>
+                            </div>
+                            <div class="col-md-12">
+                               <div class="sec_po">
+                                  <table class="table table-bordered">
+                                     <tr>
+                                        <td>PO : {{poInfo?.po_no}}</td>
+                                        <td>PO Date : {{poInfo?.po_date}}</td>
+                                     </tr>
+                                  </table>
+                               </div>
+                            </div>
+                            <div class="col-md-12">
+                               <div class="sec_po table-responsive">
+                                  <table class="table table-bordered">
+                                     <tr>
+                                        <th class="wid-15">Product</th>
+                                        <th class="wid-15">Category</th>
+                                        <th class="wid-10">Size</th>
+                                        <th>Quantity (Mt)</th>
+                                        <th>Ship To</th>
+                                        <th>Tentative Shipping Date</th>
+                                        <th>Total Amount (Rs)</th>
+                                     </tr>
+                                     <tr *ngFor="let po of poDetails">
+                                        <td class="wid-15">{{po.product_name}}</td>
+                                        <td class="wid-15">{{po.cat_name}}</td>
+                                        <td class="wid-5">{{po.pro_size}}</td>
+                                        <td class="center">{{po.qty}}</td>
+                                        <td class="center">{{po.ship_to}}</td>
+                                        <td class="center">{{po.tentative_delivey_date}}</td>
+                                        <td align="right">{{po.kam_price}}</td>
+                                     </tr>
+
+                                     <tr>
+                                        <td align="right" colspan="6">
+                                           <b>Total</b>
+                                        </td>
+                                        <td align="right"><p>{{poInfo?.total_price}}</p></td>
+                                     </tr>
+                                  </table>
+                               </div>
+                            </div>
+                            <div class="col-md-12">
+                               <div class="sec_po">
+                                  <table class="table table-bordered">
+                                     <tr>
+                                        <td class="wid-50" rowspan="2">
+                                           <p>Special Instructions</p>
+                                           <div class="sig-pic"></div>
+                                        </td>
+                                        <td class="wid-50">
+                                           <p>Approval Signature</p>
+                                           <div class="sig-pic"></div>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td class="wid-50">
+                                           <p>Purchaser Signature</p>
+                                           <div class="sig-pic"></div>
+                                        </td>
+                                     </tr>
+                                  </table>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- content -->
+          <footer class="footer d-none d-sm-block">
+             <div class="footer-inner bgc-white-tp1">
+                <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                   <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+                </div>
+             </div>
+             <div class="footer-tools">
+                <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                <i class="fa fa-angle-double-up mx-2px text-95"></i>
+                </a>
+             </div>
+          </footer>
+          <!-- footer -->
+       </div>
+    </div>
+ </div>

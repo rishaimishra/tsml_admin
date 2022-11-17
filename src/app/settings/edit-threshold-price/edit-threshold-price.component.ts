@@ -30,6 +30,8 @@ export class EditThresholdPriceComponent implements OnInit {
   InterestRate:any;
   kamDiscount:any;
 
+  price:any;
+
   constructor(private _categorie: CategoryService,
     private loader: NgxSpinnerService, private _router: Router,
     private _product: ProductsService, private _fb: FormBuilder,
@@ -50,12 +52,10 @@ export class EditThresholdPriceComponent implements OnInit {
 
   ngOnInit(): void {
     this._route.params.subscribe((param:any) => {
-      console.log(param.id);
       this.thresholdDetails(param.id)
     })
 
     this._categorie.productList().subscribe((res: any) => {
-      this.loader.hide();
       if (res.message == 'success.' && res.status == 1) {
         this.productList = res.result;
       }
@@ -68,26 +68,24 @@ export class EditThresholdPriceComponent implements OnInit {
 
   thresholdDetails(thresholdId:any) {
     let apiUrl = '/admin/get-threshold-price-details-admin/'+thresholdId;
-
     this._product.getMethod(apiUrl).subscribe((res:any) => {
-      console.log(res);
       if (res.status == 1 && res.message == 'success.') {
         this.editdataInfo = res.result;
-        this.basicPrice = this.editdataInfo['bpt_price'];
-        this.premiumPrice = this.editdataInfo['price_premium'];
-        this.productName = this.editdataInfo['pro_id'];
-        this.miscExp = this.editdataInfo['misc_expense'];
-        this.InterestRate = this.editdataInfo['interest_rate'];
-        this.kamDiscount = this.editdataInfo['cam_discount'];
-        
-        this.selectCat(this.editdataInfo['cat_id']);
-        console.log('data',this.basicPrice);
+        console.log('dd',this.editdataInfo);
+        // this.basicPrice = this.editdataInfo['bpt_price'];
+        // this.premiumPrice = this.editdataInfo['price_premium'];
+        // this.productName = this.editdataInfo['pro_id'];
+        // this.miscExp = this.editdataInfo['misc_expense'];
+        // this.InterestRate = this.editdataInfo['interest_rate'];
+        // this.kamDiscount = this.editdataInfo['cam_discount'];
+        let pId = this.editdataInfo.cat_id;
+        this.selectCat(this.editdataInfo.cat_id);
+        console.log('data',pId);
       }
     })
   }
   selectProduct(event: any) {
-    alert('Hi');
-    this.loader.show();
+    // this.loader.show();
     this.productId = event.target.value;
     let apiurl = '/admin/get-category-list/' + this.productId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
@@ -97,9 +95,9 @@ export class EditThresholdPriceComponent implements OnInit {
   };
 
   selectCat(event: any) {
-    this.loader.show();
+    // this.loader.show();
     this.categorieId = event.target.value;
-    console.log('catId',this.categorieId);
+    console.log('11',this.categorieId);
     let apiurl = '/admin/get-sub-category-list/' + this.categorieId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
@@ -127,11 +125,15 @@ export class EditThresholdPriceComponent implements OnInit {
   };
 
   saveThreshold() {
-    this.loader.show();
-    this.setthresholdForm.value['pro_id'] = this.productId;
-    this.setthresholdForm.value['cat_id'] = this.categorieId;
-    this.setthresholdForm.value['sub_cat_id'] = this.subCategoriList;
-    this.setthresholdForm.value['size'] = this.productSize;
+    // this.loader.show();
+    // this.setthresholdForm.value['pro_id'] = this.productId;
+    // this.setthresholdForm.value['cat_id'] = this.categorieId;
+    // this.setthresholdForm.value['sub_cat_id'] = this.subCategoriList;
+    // this.setthresholdForm.value['size'] = this.productSize;
+
+    console.log(this.setthresholdForm.value);
+
+    return;
     this._product.updateThreshold(this.setthresholdForm.value).subscribe((res:any) => {
       this.loader.hide();
       console.log(res);

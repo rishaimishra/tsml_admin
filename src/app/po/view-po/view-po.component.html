@@ -1,0 +1,152 @@
+<div class="body-container">
+   <app-header></app-header>
+   <!-- /.navbar -->
+   <div class="main-container">
+      <app-sidebar></app-sidebar>
+      <!-- /.sidebar -->
+      <div role="main" class="main-content">
+         <div class="page-content container container-plus">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h4 class="pull-left page-title">View PO Details</h4>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="panel panel-default">
+                     <div class="panel-heading">
+                        <form [formGroup]="searchPoForm" (ngSubmit)="submitSearch()">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="category">Start Date</label>
+                                    <input type="date" formControlName="from_date" placeholder="Type here" id="category"
+                                       class="form-control">
+                                    <div
+                                       *ngIf="f['from_date'].invalid && (f['from_date'].dirty || f['from_date'].touched || submitted)">
+                                       <small class="errorStyle text-danger">
+                                          Start Date is required.
+                                       </small>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="category">End Date</label>
+                                    <input type="date" formControlName="to_date" (click)="selectEndDate()" value=""
+                                       placeholder="Type here" id="category" class="form-control">
+                                       <div
+                                       *ngIf="f['to_date'].invalid && (f['to_date'].dirty || f['to_date'].touched || submitted)">
+                                       <small class="errorStyle text-danger">
+                                          To Date is required.
+                                       </small>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="category">PO No.</label>
+                                    <input type="text" formControlName="po_no" placeholder="Type here" id="category"
+                                       class="form-control">
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="search">Customer Name</label>
+                                    <select class="form-control rm06" formControlName="customer_name" name="status">
+                                       <option value="">--Select--</option>
+                                       <option value="{{userName.user}}" *ngFor="let userName of poViewItems">
+                                          {{userName.user}}</option>
+                                       <!-- <option value="Customer-2">Customer-2</option> -->
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="category">RFQ No.</label>
+                                    <input type="text" formControlName="rfq_no" placeholder="Type here" id="category"
+                                       class="form-control">
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="search">Product Category</label>
+                                    <select class="form-control rm06" formControlName="categorys" name="status">
+                                       <option value="">--Select--</option>
+                                       <option value="{{catName.category_name}}" *ngFor="let catName of poViewItems">
+                                          {{catName.category_name}}</option>
+                                       <!-- <option value="Categorie-2">Categorie-2</option> -->
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-4">
+                                 <div class="rm05">
+                                    <button class="btn btn-primary btn-ser" type="submit">Search</button>&nbsp;
+                                    <button class="btn btn-primary btn-ser btn-rec" (click)="rseteSearch()" type="button">Reset</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="table-responsive">
+                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                       <tr>
+                                          <th>PO No.</th>
+                                          <th>PO Date</th>
+                                          <th>Customer Name</th>
+                                          <th>RFQ No.</th>
+                                          <th>Product Category</th>
+                                          <th></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr *ngFor="let poItem of poViewItems">
+                                          <td>{{poItem.po_no}}</td>
+                                          <td>{{poItem.po_date}}</td>
+                                          <td class="text-center">{{poItem.user}}</td>
+                                          <td>{{poItem.rfq_no}}</td>
+                                          <td>{{poItem.category_name}}</td>
+                                          <td>
+                                             <a [routerLink]="['/po-details',poItem.po_no]"
+                                                class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                <i class="fa fa-eye"></i>
+                                             </a>
+                                             <a [href]="basUrlPath+'/download-po-details-pdf/'+poItem.po_no" target="_blank"
+                                                class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                <i class="fa fa-download"></i>
+                                             </a>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                                 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- content -->
+         <footer class="footer d-none d-sm-block">
+            <div class="footer-inner bgc-white-tp1">
+               <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                  <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+               </div>
+            </div>
+            <div class="footer-tools">
+               <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                  <i class="fa fa-angle-double-up mx-2px text-95"></i>
+               </a>
+            </div>
+         </footer>
+         <!-- footer -->
+      </div>
+   </div>
+</div>

@@ -40,6 +40,8 @@ export class ProductsService {
     return this._http.post(this.BesUrl + '/admin/update-threshold-price-admin', reqParameter);
   };
 
-  //http://localhost/TSML/api/admin/get-threshold-price-details-admin/1
+  getPoList(reqParameter: any) {
+    return this._http.post(this.BesUrl + '/get-po-list-admin', reqParameter);
+  };
 
 }

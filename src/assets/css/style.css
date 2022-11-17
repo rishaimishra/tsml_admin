@@ -232,15 +232,49 @@ table tbody tr td:last-child {
 .main-content {
     max-width: calc(100% - 256px);
 }
-table.table-bordered.dataTable th, table.table-bordered.dataTable td {
+/*table.table-bordered.dataTable th, table.table-bordered.dataTable td {
     border-left-width: 0;
     word-break: break-word;
 }
 table.dataTable>thead>tr>th:not(.sorting_disabled), table.dataTable>thead>tr>td:not(.sorting_disabled) {
     padding-right: 22px;
+}*/
+.btn-rec {
+    color: #3D7EEB;
+    background-color: #fff;
+    border: 2px solid #3D7EEB;
 }
-
-
+.btn-rec:hover {
+    color: #fff;
+    background-color: #3D7EEB;
+    border-color: #3D7EEB;
+    border: 2px solid #3D7EEB;
+}
+.sec_po p {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+.sec_po td p span {
+    font-weight: bold;
+}
+.sec_po th {
+    white-space: nowrap;
+}
+.wid-15 {
+    width: 15%;
+    white-space: nowrap !important;
+}
+.wid-5 {
+    width: 5%;
+    white-space: nowrap !important;
+}
+.wid-50 {
+    width: 50%;
+}
+.sig-pic {
+    height: 30px;
+}
 
 
 

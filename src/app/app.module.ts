@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthIntercepto } from './service/auth.interceptor';
 import { RouterModule } from '@angular/router';
+import { PoModule } from './po/po.module';
 
 
 
@@ -37,6 +38,7 @@ import { RouterModule } from '@angular/router';
     SettingsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot() ,
+    PoModule,
     NgxSpinnerModule.forRoot(),
 
   ],
