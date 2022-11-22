@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -39,14 +40,19 @@ export class LoginComponent implements OnInit {
       return;
     }
     this._auth.adminLogin(this.adminLoginForm.value).subscribe((res: any) => {
+      this._spinner.hide();
       if (res.success != false) {
         localStorage.setItem('tokenUrl', res.token.original.access_token);
         this._toaster.success('Login Successfully')
         this._router.navigate(['/dashboard']);
-        this._spinner.hide();
-      } 
+      }
     }, err => {
-      this._toaster.error('Something went Wrong');
+      // this._toaster.error('Something went Wrong');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter valid email and password!',
+      })
       console.log(err);
       this._spinner.hide();
     })

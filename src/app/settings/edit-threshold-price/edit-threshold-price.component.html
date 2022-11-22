@@ -20,13 +20,13 @@
                    <div class="col-md-12">
                       <div class="panel panel-default">
                          <div class="panel-body">
-                           <form [formGroup]="setthresholdForm">
                             <div class="row">
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Product Name</label>
-                                    <select class="form-control rm06" (change)="selectProduct($event)" formControlName="pro_id"  name="status">
-                                       <option value="">--Select--</option>
+                                    <select class="form-control rm06" (change)="selectProduct($event)"  name="status" [(ngModel)]="editdataInfo.pro_id">
+                                       <!-- <option value="">--Select--</option> -->
+                                       <option selected value="">{{editdataInfo['product_title']}}</option>
                                        <option value="{{proItem.product_id}}" *ngFor="let proItem of productList">{{proItem.product_title}}</option>
                                     </select>
                                  </div>
@@ -34,8 +34,9 @@
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Categories</label>
-                                    <select class="form-control rm06" (change)="selectCat($event)" formControlName="cat_id" name="status">
-                                       <option value="">--Select--</option>
+                                    <select class="form-control rm06" (change)="selectCat($event)" name="status" [(ngModel)]="editdataInfo.cat_id">
+                                       <!-- <option value="">--Select--</option> -->
+                                       <option value="" selected>{{editdataInfo['category_name']}}</option>
                                        <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList">{{catItem.category_name}}</option>
                                     </select>
                                  </div>
@@ -43,17 +44,19 @@
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Sub Category</label>
-                                    <select class="form-control rm06" (change)="subCategori($event)" formControlName="sub_cat_id"  name="status">
-                                       <option value="">--Select--</option>
-                                       <option value="{{item.sub_category_id}}" *ngFor="let item of subCategoriList">{{item.sub_category_name}}</option>
+                                    <select class="form-control rm06"  name="status" [(ngModel)]="editdataInfo.sub_cat_id">
+                                       <!-- <option value="">--Select--</option> -->
+                                       <option value="" selected>{{editdataInfo['sub_category_name']}}</option>
+                                       <option value="{{item?.sub_category_id}}" *ngFor="let item of subCategoriList">{{item?.sub_category_name}}</option>
                                     </select>
                                  </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="category">Sizes Offered</label>
-                                     <select class="form-control rm06" name="status" formControlName="size" >
-                                        <option value="">--Select--</option>
+                                     <select class="form-control rm06" name="status" [(ngModel)]="editdataInfo.size">
+                                        <!-- <option value="">--Select--</option> -->
+                                        <option value="" selected>{{editdataInfo['size']}}</option>
                                         <option value="10-50">10-50</option>
                                         <option value="10-70">10-70</option>
                                         <option value="10-100">10-100</option>
@@ -64,31 +67,31 @@
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Basic Price</label>
-                                     <input type="number" placeholder="0"  formControlName="BPT_Price" id="" class="form-control" value="">
+                                     <input type="number" [(ngModel)]="editdataInfo.bpt_price" class="form-control" value="">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Price Premium</label>
-                                     <input type="number" placeholder="0" formControlName="Price_Premium"  id="" class="form-control" value="">
+                                     <input type="number" placeholder="0" [(ngModel)]="editdataInfo.price_premium" id="" class="form-control" value="">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Misc Expense</label>
-                                     <input type="number" placeholder="0" formControlName="Misc_Expense" id="" class="form-control" value="">
+                                     <input type="number" placeholder="0" [(ngModel)]="editdataInfo.misc_expense" id="" class="form-control" value="">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">Interest Rate ( % )</label>
-                                     <input type="number" placeholder="0" formControlName="Interest_Rate" id=""  class="form-control" value="">
+                                     <input type="number" placeholder="0" [(ngModel)]="editdataInfo.interest_rate" id=""  class="form-control" value="">
                                   </div>
                                </div>
                                <div class="col-sm-4">
                                   <div class="form-group">
                                      <label for="">KAM Discount</label>
-                                     <input type="number" placeholder="0" formControlName="CAM_Discount"  id="" class="form-control" value="">
+                                     <input type="number" placeholder="0" [(ngModel)]="editdataInfo.cam_discount" id="" class="form-control" value="">
                                   </div>
                                </div>
                                <div class="col-sm-12">
@@ -97,7 +100,6 @@
                                   </div>
                                </div>
                             </div>
-                           </form>
                          </div>
                       </div>
                    </div>

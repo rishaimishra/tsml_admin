@@ -29,7 +29,7 @@ export class PoDetailsComponent implements OnInit {
 
   getPoDetails() {
     this._spinner.show();
-    let apiUrl = '/get-po-details-admin/' +this.poNumber;
+    let apiUrl = '/admin/get-po-details-admin/' +this.poNumber;
     this._product.getMethod(apiUrl).subscribe((res:any) => {
       this._spinner.hide();
       if (res.status == 1 && res.message == 'success') {

@@ -41,7 +41,7 @@ export class ProductsService {
   };
 
   getPoList(reqParameter: any) {
-    return this._http.post(this.BesUrl + '/get-po-list-admin', reqParameter);
+    return this._http.post(this.BesUrl + '/admin/get-po-list-admin', reqParameter);
   };
 
 }

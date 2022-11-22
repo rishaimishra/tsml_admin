@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,9 +20,9 @@ export class EditThresholdPriceComponent implements OnInit {
   productSize:any;
   categorieId: any;
   subCategorieId: any;
-  subCategoriList: any;
+  subCategoriList: any = [];
 
-  editdataInfo:any;
+  editdataInfo:any = [];
   basicPrice:any;
   premiumPrice:any;
   productName:any;
@@ -31,6 +31,8 @@ export class EditThresholdPriceComponent implements OnInit {
   kamDiscount:any;
 
   price:any;
+
+
 
   constructor(private _categorie: CategoryService,
     private loader: NgxSpinnerService, private _router: Router,
@@ -64,6 +66,7 @@ export class EditThresholdPriceComponent implements OnInit {
       }
 
     })
+
   }
 
   thresholdDetails(thresholdId:any) {
@@ -71,15 +74,8 @@ export class EditThresholdPriceComponent implements OnInit {
     this._product.getMethod(apiUrl).subscribe((res:any) => {
       if (res.status == 1 && res.message == 'success.') {
         this.editdataInfo = res.result;
-        console.log('dd',this.editdataInfo);
-        // this.basicPrice = this.editdataInfo['bpt_price'];
-        // this.premiumPrice = this.editdataInfo['price_premium'];
-        // this.productName = this.editdataInfo['pro_id'];
-        // this.miscExp = this.editdataInfo['misc_expense'];
-        // this.InterestRate = this.editdataInfo['interest_rate'];
-        // this.kamDiscount = this.editdataInfo['cam_discount'];
         let pId = this.editdataInfo.cat_id;
-        this.selectCat(this.editdataInfo.cat_id);
+        // this.selectCat(pId);
         console.log('data',pId);
       }
     })
@@ -97,7 +93,6 @@ export class EditThresholdPriceComponent implements OnInit {
   selectCat(event: any) {
     // this.loader.show();
     this.categorieId = event.target.value;
-    console.log('11',this.categorieId);
     let apiurl = '/admin/get-sub-category-list/' + this.categorieId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
@@ -111,7 +106,6 @@ export class EditThresholdPriceComponent implements OnInit {
   getPrice(event: any) {
     let size = event.target.value;
     this.productSize = event.target.value;
-
     let basicPrice = {
       "pro_id": this.productId,
       "cat_id": this.categorieId,
@@ -125,16 +119,15 @@ export class EditThresholdPriceComponent implements OnInit {
   };
 
   saveThreshold() {
-    // this.loader.show();
-    // this.setthresholdForm.value['pro_id'] = this.productId;
-    // this.setthresholdForm.value['cat_id'] = this.categorieId;
-    // this.setthresholdForm.value['sub_cat_id'] = this.subCategoriList;
-    // this.setthresholdForm.value['size'] = this.productSize;
-
-    console.log(this.setthresholdForm.value);
-
+    let USERID = localStorage.getItem('USER_ID');
+    let userId = {
+      "user_id": USERID
+    }
+    this.editdataInfo.push(userId);
+    console.log(this.editdataInfo);
     return;
-    this._product.updateThreshold(this.setthresholdForm.value).subscribe((res:any) => {
+
+    this._product.updateThreshold(this.editdataInfo).subscribe((res:any) => {
       this.loader.hide();
       console.log(res);
       if (res.status == 1) {
