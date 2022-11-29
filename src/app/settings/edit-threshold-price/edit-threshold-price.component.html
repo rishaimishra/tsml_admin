@@ -25,8 +25,7 @@
                                  <div class="form-group">
                                     <label for="category">Product Name</label>
                                     <select class="form-control rm06" (change)="selectProduct($event)"  name="status" [(ngModel)]="editdataInfo.pro_id">
-                                       <!-- <option value="">--Select--</option> -->
-                                       <option selected value="">{{editdataInfo['product_title']}}</option>
+                                       <option [ngValue]="editdataInfo.pro_id" hidden>{{editdataInfo['product_title']}}</option>
                                        <option value="{{proItem.product_id}}" *ngFor="let proItem of productList">{{proItem.product_title}}</option>
                                     </select>
                                  </div>
@@ -35,8 +34,7 @@
                                  <div class="form-group">
                                     <label for="category">Categories</label>
                                     <select class="form-control rm06" (change)="selectCat($event)" name="status" [(ngModel)]="editdataInfo.cat_id">
-                                       <!-- <option value="">--Select--</option> -->
-                                       <option value="" selected>{{editdataInfo['category_name']}}</option>
+                                       <option [ngValue]="editdataInfo.cat_id">{{editdataInfo['category_name']}}</option>
                                        <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList">{{catItem.category_name}}</option>
                                     </select>
                                  </div>
@@ -45,8 +43,7 @@
                                  <div class="form-group">
                                     <label for="category">Sub Category</label>
                                     <select class="form-control rm06"  name="status" [(ngModel)]="editdataInfo.sub_cat_id">
-                                       <!-- <option value="">--Select--</option> -->
-                                       <option value="" selected>{{editdataInfo['sub_category_name']}}</option>
+                                       <option [ngValue]="editdataInfo.sub_cat_id">{{editdataInfo['sub_category_name']}}</option>
                                        <option value="{{item?.sub_category_id}}" *ngFor="let item of subCategoriList">{{item?.sub_category_name}}</option>
                                     </select>
                                  </div>
@@ -55,7 +52,6 @@
                                   <div class="form-group">
                                      <label for="category">Sizes Offered</label>
                                      <select class="form-control rm06" name="status" [(ngModel)]="editdataInfo.size">
-                                        <!-- <option value="">--Select--</option> -->
                                         <option value="" selected>{{editdataInfo['size']}}</option>
                                         <option value="10-50">10-50</option>
                                         <option value="10-70">10-70</option>

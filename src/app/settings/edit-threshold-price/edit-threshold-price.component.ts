@@ -81,7 +81,7 @@ export class EditThresholdPriceComponent implements OnInit {
     })
   }
   selectProduct(event: any) {
-    // this.loader.show();
+    this.loader.show();
     this.productId = event.target.value;
     let apiurl = '/admin/get-category-list/' + this.productId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
@@ -91,7 +91,7 @@ export class EditThresholdPriceComponent implements OnInit {
   };
 
   selectCat(event: any) {
-    // this.loader.show();
+    this.loader.show();
     this.categorieId = event.target.value;
     let apiurl = '/admin/get-sub-category-list/' + this.categorieId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
@@ -119,23 +119,35 @@ export class EditThresholdPriceComponent implements OnInit {
   };
 
   saveThreshold() {
-    console.log(this.editdataInfo);
-    if (this.editdataInfo[''] == null) {
+    this.loader.show();
+    if (this.editdataInfo['bpt_price'] == null || this.editdataInfo['cam_discount'] == null || this.editdataInfo['interest_rate'] == null || 
+    this.editdataInfo['misc_expense'] == null || this.editdataInfo['price_premium'] == null || this.editdataInfo['size'] == null) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'All fields are required!',
+      })
+      this.loader.hide();
       return;
     }
-    return;
+
     this._product.updateThreshold(this.editdataInfo).subscribe((res:any) => {
       this.loader.hide();
-      console.log(res);
       if (res.status == 1) {
-        Swal.fire(
-          'Success',
-          'Price Components Updated Successfully',
-          'success'
-        )
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          text: 'Price Components Updated Successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this._router.navigate(['/set-threshold-limit']);
       } else {
         console.log(res.message);
       }
+    }, err => {
+      console.log(err);
+      this.loader.hide();
     })
   }
 }
