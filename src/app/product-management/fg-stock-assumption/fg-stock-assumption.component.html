@@ -16,29 +16,29 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-3">
                                         <div class="form-group">
-                                            <label>Start Date</label>
+                                            <label>Select Date</label>
                                             <div class="position-relative">
                                                 <input type="date" [(ngModel)]="startDate" #startDt="ngModel"
                                                     class="form-control datepicker" required>
-                                                <!-- <span class="over_llp"><img src="assets/images/cal.png" alt=""></span> -->
-                                                <small *ngIf="(startDate.invalid || startDate.dirty) || submitt"
-                                                    class="inputValidation">Start Date is required</small>
+                                                
+                                                <small *ngIf="startDt.invalid && submitt"
+                                                    class="inputValidation errortext">Start Date is required</small>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-lg-3">
+                                    <!-- <div class="col-12 col-lg-3">
                                         <div class="form-group">
                                             <label>End Date</label>
                                             <div class="position-relative">
                                                 <input type="date" [(ngModel)]="endDate" #endDt="ngModel"
                                                     class="form-control datepicker" required>
-                                                <!-- <span class="over_llp"><img src="images/cal.png" alt=""></span> -->
+                                               
                                                 <small
                                                     *ngIf="endDate.invalid || endDate.dirty || endDate.touched || submitt"
                                                     class="inputValidation">End Date is required</small>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="col-12 col-lg-3">
                                         <div class="form-group">
                                             <label>FG Stock In SAP</label>

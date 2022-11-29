@@ -30,12 +30,13 @@ export class FgStockAssumptionComponent implements OnInit {
   }
 
   submitForm() {
-    // this.submitt = true;
-    // if (this.startDate == '' || this.endDate == '' || this.uploadedFile == null || this.fg_sap == '') {
-    //   this.toaster.error('','Feild is required!');
-    //   return;
-    // }
+    this.submitt = true;
     this.spinner.show();
+    if (this.startDate == '' || this.uploadedFile == null) {
+      this.toaster.error('','Feild is required!');
+      this.spinner.hide();
+      return;
+    }
     const fileData = new FormData();
 
     fileData.append('start', this.startDate);
@@ -55,11 +56,13 @@ export class FgStockAssumptionComponent implements OnInit {
         })
       }
       if (res.status == 'Token has Expired') {
+        this.toaster.info('Session Time Out','Please login again');
         this._router.navigate(['']);
       }
     }, err => {
       console.log(err);
       this.spinner.hide();
     })
+    
   }
 }

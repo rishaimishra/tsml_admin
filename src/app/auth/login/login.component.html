@@ -18,12 +18,16 @@
                <div class="form-group">
                   <div class="col-xs-12">
                      <input class="form-control input-lg" formControlName="email" type="text" required=""
-                        placeholder="Username">
-                     <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched || submitted)">
+                        placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                     <!-- <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched || submitted)">
                         <small class="text-danger">
                            Username is required
                         </small>
-                     </div>
+                     </div> -->
+                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors">Email is required</div>
+                        <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                    </div>
                   </div>
                </div>
                <div class="form-group">

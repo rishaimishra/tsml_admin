@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private _spinner: NgxSpinnerService) 
   { 
     this.adminLoginForm = this._fb.group({
-      email: ['', Validators.required],
+      email: ['',  [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: ['',Validators.required]
     })
   }
@@ -41,18 +41,20 @@ export class LoginComponent implements OnInit {
     }
     this._auth.adminLogin(this.adminLoginForm.value).subscribe((res: any) => {
       this._spinner.hide();
-      if (res.success != false) {
+      if (res.success != false && res.status != 0) {
         localStorage.setItem('tokenUrl', res.token.original.access_token);
         this._toaster.success('Login Successfully')
         this._router.navigate(['/dashboard']);
+      } 
+      else if (res.status == 0 && res.success == false) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.message,
+          // footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     }, err => {
-      // this._toaster.error('Something went Wrong');
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please enter valid email and password!',
-      })
       console.log(err);
       this._spinner.hide();
     })

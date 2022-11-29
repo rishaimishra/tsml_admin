@@ -119,14 +119,11 @@ export class EditThresholdPriceComponent implements OnInit {
   };
 
   saveThreshold() {
-    let USERID = localStorage.getItem('USER_ID');
-    let userId = {
-      "user_id": USERID
-    }
-    this.editdataInfo.push(userId);
     console.log(this.editdataInfo);
+    if (this.editdataInfo[''] == null) {
+      return;
+    }
     return;
-
     this._product.updateThreshold(this.editdataInfo).subscribe((res:any) => {
       this.loader.hide();
       console.log(res);
