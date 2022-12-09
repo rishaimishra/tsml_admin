@@ -11,7 +11,7 @@ import { EditThresholdPriceComponent } from './edit-threshold-price/edit-thresho
 
 const routes: Routes = [
   {
-    path: 'set-threshold-limit', component: SetThresholdLimitsComponent, canActivate: [AuthGuard]
+    path: 'threshold-limit', component: SetThresholdLimitsComponent, canActivate: [AuthGuard]
     
   },
   {

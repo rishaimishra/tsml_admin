@@ -19,7 +19,10 @@ export class SetThresholdComponent implements OnInit {
   productSize:any;
   categorieId: any;
   subCategorieId: any;
-  subCategoriList: any;
+  subCategoriList: any = [];
+  subCategorySize:any = [];
+  sizes:any = [];
+
 
 
   constructor(private _categorie: CategoryService,
@@ -35,7 +38,9 @@ export class SetThresholdComponent implements OnInit {
       Price_Premium: [''],
       Misc_Expense: [''],
       Interest_Rate: [''],
-      CAM_Discount: ['']
+      CAM_Discount: [''],
+      gst_per: [''],
+      Price_Premium_sing: ['']
     })
   }
 
@@ -59,7 +64,6 @@ export class SetThresholdComponent implements OnInit {
     let apiurl = '/admin/get-category-list/' + this.productId;
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
-      console.log(res);
       this.categoriList = res.result;
     })
   };
@@ -71,57 +75,30 @@ export class SetThresholdComponent implements OnInit {
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
       this.subCategoriList = res.result;
-      console.log(this.subCategoriList);
     })
   };
   subCategori(event: any) {
-    this.subCategoriList = event.target.value;
-
-  };
-  getPrice(event: any) {
-    let size = event.target.value;
-    this.productSize = event.target.value;
-
-    let basicPrice = {
-      "pro_id": this.productId,
-      "cat_id": this.categorieId,
-      "sub_cat_id": this.subCategoriList,
-      "size": size
-    };
-
-    this._product.showBasicPrice(basicPrice).subscribe((res: any) => {
+    this.subCategorySize = event.target.value;
+    console.log('HH',this.subCategorySize);
+    let apiUrl = '/admin/get-subcategory-size-byid/'+event.target.value;
+    this._product.getMethod(apiUrl).subscribe((res:any) => {
       console.log(res);
-      // if (res.status == 1 && res.message == 'No data found') {
-      //   Swal.fire({
-      //     title: 'oops',
-      //     text: "Basic Price Not Availble",
-      //     icon: 'warning',
-      //     showCancelButton: false,
-      //     confirmButtonColor: '#3085d6',
-      //     cancelButtonColor: '#d33',
-      //     confirmButtonText: 'OK'
-      //   }).then((result) => {
-      //     if (result.isConfirmed) {
-      //       Swal.fire(
-      //         'Deleted!',
-      //         'Your file has been deleted.',
-      //         'success'
-      //       )
-      //     }
-      //   })
-      // }
+      if (res.status == 1 && res.message == 'success.') {
+        this.sizes = res.result[0];
+      }
     })
   };
+
 
   saveThreshold() {
     this.loader.show();
     this.setthresholdForm.value['pro_id'] = this.productId;
     this.setthresholdForm.value['cat_id'] = this.categorieId;
-    this.setthresholdForm.value['sub_cat_id'] = this.subCategoriList;
-    this.setthresholdForm.value['size'] = this.productSize;
+    this.setthresholdForm.value['sub_cat_id'] = this.subCategorySize;
+    // this.setthresholdForm.value['size'] = this.productSize;
     this._product.setThreshold(this.setthresholdForm.value).subscribe((res:any) => {
       this.loader.hide();
-      console.log(res);
+
       if (res.status == 1) {
         Swal.fire(
           'Success',
@@ -131,6 +108,9 @@ export class SetThresholdComponent implements OnInit {
       } else {
         console.log(res.message);
       }
+    }, err => {
+      console.log(err);
+      this.loader.hide();
     })
   }
 }

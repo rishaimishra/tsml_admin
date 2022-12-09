@@ -48,47 +48,60 @@
                                     </select>
                                  </div>
                                </div>
-                               <div class="col-sm-4">
+                               <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="category">Sizes Offered</label>
-                                     <select class="form-control rm06" name="status" (change)="getPrice($event)">
-                                        <option value="10-50">10-50</option>
-                                        <option value="10-70">10-70</option>
-                                        <option value="10-100">10-100</option>
-                                        <option value="10-150">10-150</option>
+                                     <select class="form-control rm06" name="status" formControlName="size">
+                                       <option value="" selected>--Select--</option>
+                                        <option value="{{size}}" *ngFor="let size of sizes['product_size']">{{size}}</option>
                                      </select>
                                   </div>
                                </div>
-                               <div class="col-sm-4">
+                               <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">Basic Price</label>
                                      <input type="number" placeholder="" formControlName="BPT_Price" id="" class="form-control" value="0">
                                   </div>
                                </div>
-                               <div class="col-sm-4">
+                               <div class="col-sm-3">
+                                 
                                   <div class="form-group">
-                                     <label for="">Price Premium</label>
+                                     <label for="">Quality Premium</label>
+                                     <div class="twoFrm">
+                                     <select class="form-control rm06" formControlName="Price_Premium_sing" name="status">
+                                       <option value="" selected>sel..</option>
+                                       <option value="0" >0</option>
+                                       <option value="+" >+</option>
+                                       <option value="-" >-</option>                                       
+                                     </select>
                                      <input type="number" placeholder="" formControlName="Price_Premium" id="" class="form-control" value="0">
                                   </div>
+                                 </div>
                                </div>
-                               <div class="col-sm-4">
+                               <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">Misc Expense</label>
                                      <input type="number" placeholder="" formControlName="Misc_Expense" id="" class="form-control" value="0">
                                   </div>
                                </div>
-                               <div class="col-sm-4">
+                               <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">Interest Rate ( % )</label>
                                      <input type="number" placeholder="" id="" formControlName="Interest_Rate" class="form-control" value="0">
                                   </div>
                                </div>
-                               <div class="col-sm-4">
+                               <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">KAM Discount</label>
                                      <input type="number" placeholder=""  formControlName="CAM_Discount" id="" class="form-control" value="0">
                                   </div>
                                </div>
+                               <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <label for="">GST (%)</label>
+                                    <input type="number" placeholder=""  formControlName="gst_per" id="" class="form-control" value="0">
+                                 </div>
+                              </div>
                                <div class="col-sm-12">
                                   <div class="">
                                      <button type="button" (click)="saveThreshold()" class="btn btn-primary btn-ser" >Save</button>

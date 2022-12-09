@@ -29,7 +29,6 @@ export class EditThresholdPriceComponent implements OnInit {
   miscExp:any;
   InterestRate:any;
   kamDiscount:any;
-
   price:any;
 
 
