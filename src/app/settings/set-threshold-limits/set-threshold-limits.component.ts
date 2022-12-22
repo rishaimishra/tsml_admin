@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/service/products.service';
 })
 export class SetThresholdLimitsComponent implements OnInit {
   thresholdItems:any;
-
+  p: number = 1;
 
 
   constructor(private _products: ProductsService,
@@ -24,7 +24,6 @@ export class SetThresholdLimitsComponent implements OnInit {
     this.loader.show();
     this._products.getthresholdList().subscribe((res:any) => {
       this.loader.hide();
-      console.log(res);
       if (res.status == 1 && res.message == 'success') {
         this.thresholdItems = res.result;
       }

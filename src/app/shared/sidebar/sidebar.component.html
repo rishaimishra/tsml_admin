@@ -4,7 +4,7 @@
            <div class="ace-scroll flex-grow-1">
               <ul class="nav has-active-border active-on-right">
                  <li class="nav-item">
-                    <a routerLink="/dashboard" class="nav-link">
+                    <a routerLink="/dashboard/dashboard" class="nav-link">
                     <i class="fa fa-home nav-icon"></i>
                     <span class="nav-text fadeable">
                     <span>Dashboard</span>
@@ -22,21 +22,21 @@
                     <div class="hideable submenu collapse">
                        <ul class="submenu-inner">
                           <li class="nav-item">
-                             <a routerLink="/category" class="nav-link">
+                             <a routerLink="/product-management/category" class="nav-link">
                              <span class="nav-text">
                              <span>Category</span>
                              </span>
                              </a>
                           </li>
                           <li class="nav-item">
-                             <a routerLink="/sub-category" class="nav-link">
+                             <a routerLink="/product-management/sub-category" class="nav-link">
                              <span class="nav-text">
                              <span>Sub Category</span>
                              </span>
                              </a>
                           </li>
                           <li class="nav-item">
-                           <a routerLink="/fg-stock" class="nav-link">
+                           <a routerLink="/product-management/fg-stock" class="nav-link">
                            <span class="nav-text">
                            <span>FG Atock Assumption</span>
                            </span>
@@ -46,17 +46,8 @@
                     </div>
                     <b class="sub-arrow"></b>
                  </li>
-                 <!-- <li class="nav-item">
-                    <a routerLink="/price-management" class="nav-link">
-                    <i class="fas fa-rupee-sign nav-icon"></i>
-                    <span class="nav-text fadeable">
-                    <span>Price Management</span>
-                    </span>
-                    </a>
-                 </li> -->
-                 
                  <li class="nav-item">
-                    <a routerLink="/freight-charges" class="nav-link">
+                    <a routerLink="/manage-charges/freight-charges" class="nav-link">
                     <i class="fas fa-rupee-sign nav-icon"></i>
                     <span class="nav-text fadeable">
                     <span>Manage Freight Charges</span>
@@ -71,6 +62,27 @@
                     </span>
                     </a>
                  </li>
+               <!-- Customer upload -->
+               <li class="nav-item" style="cursor: pointer;">
+                  <a class="nav-link dropdown-toggle collapsed">
+                     <i class="fa fa-user-plus nav-icon"></i>
+                     <span class="nav-text fadeable">
+                     <span>Customer Upload</span>
+                     </span>
+                     <b class="caret fa fa-angle-left rt-n90"></b>
+                  </a>
+               <div class="hideable submenu collapse">
+                  <ul class="submenu-inner">
+                     <li class="nav-item" routerLink="/customer/customer-upload">
+                        <a class="nav-link">
+                        <span class="nav-text">
+                        <span>Upload Customer</span>
+                        </span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               </li>
                  <li class="nav-item">
                     <a class="nav-link">
                     <i class="fa fa-shopping-bag nav-icon"></i>
@@ -79,7 +91,7 @@
                     </span>
                     </a>
                  </li>
-                 <li class="nav-item" style="cursor: pointer;" routerLink="/po-list">
+                 <li class="nav-item" style="cursor: pointer;" routerLink="/po/po-list">
                   <a class="nav-link">
                      <i class="nav-icon fa fa-file-text-o"></i>
                      <span class="nav-text fadeable">
@@ -98,7 +110,7 @@
                     <div class="hideable submenu collapse">
                        <ul class="submenu-inner">
                           <li class="nav-item">
-                             <a routerLink="/threshold-limit" class="nav-link">
+                             <a routerLink="/settings/threshold-limit" class="nav-link">
                              <span class="nav-text">
                              <span>Set Threshold Limits</span>
                              </span>

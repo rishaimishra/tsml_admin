@@ -20,6 +20,7 @@ export class AddFreightChargesComponent implements OnInit {
   pickLocation: any;
   status: any;
   destinationLocation:any;
+  p: number = 1;
 
 
   constructor(private _category: CategoryService,

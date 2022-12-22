@@ -105,14 +105,14 @@
                                        </tr>
                                     </thead>
                                     <tbody>
-                                       <tr *ngFor="let poItem of poViewItems">
+                                       <tr *ngFor="let poItem of poViewItems | paginate: { itemsPerPage: 8, currentPage: p }">
                                           <td>{{poItem.po_no}}</td>
                                           <td>{{poItem.po_date}}</td>
                                           <td class="text-center">{{poItem.user}}</td>
                                           <td>{{poItem.rfq_no}}</td>
                                           <td>{{poItem.category_name}}</td>
                                           <td>
-                                             <a [routerLink]="['/po-details',poItem.po_no]"
+                                             <a [routerLink]="['/po/po-details',poItem.po_no]"
                                                 class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                                 <i class="fa fa-eye"></i>
                                              </a>
@@ -124,7 +124,9 @@
                                        </tr>
                                     </tbody>
                                  </table>
-                                 
+                                 <div class="col-12 text-right">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                  </div>
                               </div>
                            </div>
                         </div>

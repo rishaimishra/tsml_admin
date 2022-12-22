@@ -56,7 +56,7 @@
                                       </tr>
                                    </thead>
                                    <tbody>
-                                      <tr *ngFor="let subItem of subCtgryList">
+                                      <tr *ngFor="let subItem of subCtgryList | paginate: { itemsPerPage: 10, currentPage: p }">
                                          <td>{{subItem?.category_name}}</td>
                                          <td>{{subItem?.sub_category_name}}</td>
                                          <td>
@@ -76,6 +76,9 @@
                                       
                                    </tbody>
                                 </table>
+                                <div class="col-12 text-right">
+                                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                               </div>
                              </div>
                           </div>
                        </div>

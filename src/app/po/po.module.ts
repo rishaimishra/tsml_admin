@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PoDetailsComponent } from './po-details/po-details.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const routes: Routes = [
   {path: 'po-list', component: ViewPoComponent,canActivate: [AuthGuard]},
@@ -24,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class PoModule { }

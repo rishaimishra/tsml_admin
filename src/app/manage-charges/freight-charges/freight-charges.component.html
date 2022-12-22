@@ -10,7 +10,7 @@
                 <div class="col-sm-12">
                    <h4 class="pull-left page-title">Freight Charges Management</h4>
                    <ol class="breadcrumb pull-right">
-                      <li> <a routerLink="/add-freight-charges"><i class="far fa-plus-square"></i> Add Freight Charges</a></li>
+                      <li> <a routerLink="/manage-charges/add-freight-charges"><i class="far fa-plus-square"></i> Add Freight Charges</a></li>
                    </ol>
                 </div>
              </div>
@@ -56,7 +56,7 @@
                                         </tr>
                                      </thead>
                                      <tbody>
-                                        <tr *ngFor="let freight of freightCharges">
+                                        <tr *ngFor="let freight of freightCharges | paginate: { itemsPerPage: 10, currentPage: p }">
                                            <td>{{freight?.pickup_from}}</td>
                                            <td>{{freight?.location}}</td>
                                            <td>{{freight?.freight_charges}}</td>
@@ -71,9 +71,11 @@
                                               </a>
                                            </td>
                                         </tr>
-                                      
                                      </tbody>
                                   </table>
+                                  <div class="col-12 text-right">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                  </div>
                                </div>
                             </div>
                          </div>

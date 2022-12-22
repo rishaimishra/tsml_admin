@@ -9,7 +9,7 @@
              <div class="row">
                 <div class="col-sm-12">
                    <h4 class="pull-left page-title">Threshold Limits</h4>
-                   <ol class="breadcrumb pull-right tabclass" routerLink="/set-threshold">
+                   <ol class="breadcrumb pull-right tabclass" routerLink="/settings/set-threshold">
                       <li> <a><i class="far fa-plus-square"></i> Set Threshold Limits</a></li>
                    </ol>
                 </div>
@@ -60,7 +60,7 @@
                                      </tr>
                                   </thead>
                                   <tbody>
-                                     <tr *ngFor="let priceItem of thresholdItems">
+                                     <tr *ngFor="let priceItem of thresholdItems | paginate: { itemsPerPage: 10, currentPage: p }">
                                         <td>{{priceItem.product_title}}</td>
                                         <td>{{priceItem.category_name}}</td>
                                         <td>{{priceItem.sub_category_name}}</td>
@@ -71,7 +71,7 @@
                                         <td>{{priceItem.Interest_Rate}}</td>
                                         <td>{{priceItem.CAM_Discount}}</td>
                                         <td>
-                                           <a [routerLink]="['/edit-threshold',priceItem.threshold]" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                           <a [routerLink]="['/settings/edit-threshold',priceItem.threshold]" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                            </a>
                                            <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
@@ -82,6 +82,9 @@
                                      
                                   </tbody>
                                </table>
+                               <div class="col-12 text-right">
+                                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                               </div>
                             </div>
                          </div>
                       </div>

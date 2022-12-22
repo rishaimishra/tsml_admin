@@ -16,6 +16,7 @@ export class ViewPoComponent implements OnInit {
   searchPoForm: FormGroup
   submitted: boolean = false;
   basUrlPath = environment.apiEndpointBase;
+  p: number = 1;
 
 
   constructor(private _product: ProductsService,

@@ -14,6 +14,7 @@ export class FreightChargesComponent implements OnInit {
   freightCharges: any;
   pickupValue: string = '';
   status: any;
+  p: number = 1;
 
   constructor(private _category: CategoryService,
     private _spinner: NgxSpinnerService, private _product: ProductsService,
@@ -64,7 +65,6 @@ export class FreightChargesComponent implements OnInit {
         let apiKey = '/admin/delete-freight';
         let apiUrl = apiKey+ '/'+ id;
         this._product.getMethod(apiUrl).subscribe((res: any) => {
-          console.log(res);
           if (res.status == 1 && res.message == 'Freight deleted successfully.') {
             this._spinner.hide();
             // this._toaster.success('Deleted');

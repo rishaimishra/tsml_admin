@@ -37,13 +37,9 @@ export class SidebarComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.logOut();
-        Swal.fire(
-          'Logout',
-          'Success',
-        )
       }
     })
-  }
+  };
 
   logOut() {
     this.isUserLogIn = false;

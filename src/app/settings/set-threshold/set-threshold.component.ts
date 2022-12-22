@@ -98,7 +98,6 @@ export class SetThresholdComponent implements OnInit {
     // this.setthresholdForm.value['size'] = this.productSize;
     this._product.setThreshold(this.setthresholdForm.value).subscribe((res:any) => {
       this.loader.hide();
-
       if (res.status == 1) {
         Swal.fire(
           'Success',

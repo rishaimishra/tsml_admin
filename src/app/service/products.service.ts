@@ -43,5 +43,8 @@ export class ProductsService {
   getPoList(reqParameter: any) {
     return this._http.post(this.BesUrl + '/admin/get-po-list-admin', reqParameter);
   };
+  customerUpload(reqParameter: any) {
+    return this._http.post(this.BesUrl + '/user-bulk-upload', reqParameter);
+  };
 
 }

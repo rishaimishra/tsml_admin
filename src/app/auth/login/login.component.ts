@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       if (res.success != false && res.status != 0) {
         localStorage.setItem('tokenUrl', res.token.original.access_token);
         this._toaster.success('Login Successfully')
-        this._router.navigate(['/dashboard']);
+        this._router.navigate(['/dashboard/dashboard']);
       } 
       else if (res.status == 0 && res.success == false) {
         Swal.fire({

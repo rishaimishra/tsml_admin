@@ -9,7 +9,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { FgStockAssumptionComponent } from './fg-stock-assumption/fg-stock-assumption.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const routes: Routes = [
   {
@@ -43,7 +43,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
     
     
   ]

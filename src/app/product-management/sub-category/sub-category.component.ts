@@ -10,6 +10,10 @@ import { CategoryService } from 'src/app/service/category.service';
 })
 export class SubCategoryComponent implements OnInit {
   subCtgryList: any = [];
+  p: number = 1;
+
+
+  
   constructor(private _category: CategoryService,
     private _spiner: NgxSpinnerService, private _router: Router) { }
 

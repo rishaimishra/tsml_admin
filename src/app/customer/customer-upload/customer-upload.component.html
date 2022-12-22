@@ -1,0 +1,45 @@
+<div class="body-container">
+    <app-header></app-header>
+    <div class="main-container">
+        <app-sidebar></app-sidebar>
+        <div role="main" class="main-content">
+            <div class="page-content container container-plus">
+                <section class="prof-head">
+                    <div class="container">
+                        <h2>Customer Upload</h2>
+                    </div>
+                </section>
+                <section class="prof-form">
+                    <div class="container">
+                        <div class="prof-form-bdy">
+                            <div class="search-sec">
+                                <div class="row mt-5">
+                                    <div class="col-6 col-lg-6">
+                                        <label for="">Upload file here</label>
+                                        <div class="custom-file mb-3">
+                                            <input type="file" accept=".xlsx,.xlsm," (change)="fileUplaod($event)"
+                                                class="custom-file-input" id="customFile" name="filename" required>
+                                            <label class="custom-file-label" for="customFile">{{uploadedFile?.name ?
+                                                uploadedFile?.name : 'Customer Upload'}}</label>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <button class="btn btn-primary" type="button" (click)="submitForm()"><i
+                                                class="fa fa-paper-plane"></i> Submit</button>&nbsp;
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->
