@@ -1,5 +1,7 @@
+ <!-- <app-header (sideNavToggled)="sideNavStatus = $event"></app-header> -->
 <div class="">
-    <div id="sidebar" class="sidebar sidebar-fixed expandable sidebar-light">
+   <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+    <div id="sidebar" class="sidebar sidebar-fixed expandable sidebar-light" [ngClass]="{collapsed: sideNavStatus == false, hasopen:prodDropStatus == true}">
         <div class="sidebar-inner">
            <div class="ace-scroll flex-grow-1">
               <ul class="nav has-active-border active-on-right">
@@ -11,37 +13,51 @@
                     </span>
                     </a>
                  </li>
-                 <li class="nav-item" style="cursor: pointer;">
-                    <a class="nav-link dropdown-toggle collapsed">
+                 <li class="nav-item" style="cursor: pointer;" [ngClass]="{open: prodDropStatus == true}">
+                    <a class="nav-link dropdown-toggle" [ngClass]="{collapsed: prodDropStatus == false}" (click)="prodManStatus()">
                        <i class="nav-icon fa fa-cube"></i>
                        <span class="nav-text fadeable">
-                       <span>Product Management</span>
+                        <span>Product Management</span>
                        </span>
                        <b class="caret fa fa-angle-left rt-n90"></b>
                     </a>
-                    <div class="hideable submenu collapse">
+                    <div class="hideable submenu" [ngClass]="{collapse: prodDropStatus == false}">
                        <ul class="submenu-inner">
                           <li class="nav-item">
                              <a routerLink="/product-management/category" class="nav-link">
-                             <span class="nav-text">
-                             <span>Category</span>
-                             </span>
+                              <span class="nav-text">
+                                 <span>Category</span>
+                              </span>
                              </a>
                           </li>
                           <li class="nav-item">
                              <a routerLink="/product-management/sub-category" class="nav-link">
-                             <span class="nav-text">
-                             <span>Sub Category</span>
-                             </span>
+                              <span class="nav-text">
+                                 <span>Sub Category</span>
+                              </span>
                              </a>
                           </li>
                           <li class="nav-item">
-                           <a routerLink="/product-management/fg-stock" class="nav-link">
-                           <span class="nav-text">
-                           <span>FG Atock Assumption</span>
-                           </span>
-                           </a>
-                        </li>
+                              <a routerLink="/product-management/fg-stock" class="nav-link">
+                                 <span class="nav-text">
+                                    <span>FG Stock Assumption</span>
+                                 </span>
+                              </a>
+                           </li>
+                          <li class="nav-item">
+                              <a routerLink="/product-management/product-upload" class="nav-link">
+                                 <span class="nav-text">
+                                    <span>Product Upload</span>
+                                 </span>
+                              </a>
+                           </li>
+                          <li class="nav-item">
+                              <a routerLink="/product-management/product-list" class="nav-link">
+                                 <span class="nav-text">
+                                    <span>Product List</span>
+                                 </span>
+                              </a>
+                           </li>
                        </ul>
                     </div>
                     <b class="sub-arrow"></b>
@@ -63,15 +79,15 @@
                     </a>
                  </li>
                <!-- Customer upload -->
-               <li class="nav-item" style="cursor: pointer;">
-                  <a class="nav-link dropdown-toggle collapsed">
+               <li class="nav-item" style="cursor: pointer;" [ngClass]="{open: custDropStatus == true}">
+                  <a class="nav-link dropdown-toggle" [ngClass]="{collapsed: custDropStatus == false}" (click)="customerStatus()">
                      <i class="fa fa-user-plus nav-icon"></i>
                      <span class="nav-text fadeable">
                      <span>Customer Upload</span>
                      </span>
                      <b class="caret fa fa-angle-left rt-n90"></b>
                   </a>
-               <div class="hideable submenu collapse">
+               <div class="hideable submenu" [ngClass]="{collapse: custDropStatus == false}">
                   <ul class="submenu-inner">
                      <li class="nav-item" routerLink="/customer/customer-upload">
                         <a class="nav-link">
@@ -99,20 +115,27 @@
                      </span>
                   </a>
                </li>
-                 <li class="nav-item" style="cursor: pointer;">
-                    <a class="nav-link dropdown-toggle collapsed">
+                 <li class="nav-item" style="cursor: pointer;" [ngClass]="{open: settingsDropStatus == true}">
+                    <a class="nav-link dropdown-toggle" [ngClass]="{collapsed: settingsDropStatus == false}" (click)="settingsStatus()">
                        <i class="nav-icon fa fa-cog"></i>
                        <span class="nav-text fadeable">
                        <span>Setting</span>
                        </span>
                        <b class="caret fa fa-angle-left rt-n90"></b>
                     </a>
-                    <div class="hideable submenu collapse">
+                    <div class="hideable submenu" [ngClass]="{collapse: settingsDropStatus == false}">
                        <ul class="submenu-inner">
                           <li class="nav-item">
                              <a routerLink="/settings/threshold-limit" class="nav-link">
                              <span class="nav-text">
                              <span>Set Threshold Limits</span>
+                             </span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a routerLink="/settings/security-questions" class="nav-link">
+                             <span class="nav-text">
+                             <span>Set Security Questions</span>
                              </span>
                              </a>
                           </li>

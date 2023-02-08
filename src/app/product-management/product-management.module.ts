@@ -10,6 +10,11 @@ import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.com
 import { AuthGuard } from '../auth/auth.guard';
 import { FgStockAssumptionComponent } from './fg-stock-assumption/fg-stock-assumption.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductUploadComponent } from './product-upload/product-upload.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 const routes: Routes = [
   {
@@ -26,7 +31,22 @@ const routes: Routes = [
   },
   {
     path: 'fg-stock', component: FgStockAssumptionComponent, canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'product-upload', component: ProductUploadComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-product/:id', component: EditProductComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-category/:id', component: EditCategoryComponent, canActivate: [AuthGuard]
+  },
 ]
 
 
@@ -36,7 +56,12 @@ const routes: Routes = [
     SubCategoryComponent,
     AddCategoryComponent,
     AddSubCategoryComponent,
-    FgStockAssumptionComponent
+    FgStockAssumptionComponent,
+    ProductUploadComponent,
+    ProductListComponent,
+    EditProductComponent,
+    AddProductComponent,
+    EditCategoryComponent
   ],
   imports: [
     CommonModule,

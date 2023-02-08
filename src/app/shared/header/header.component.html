@@ -5,10 +5,10 @@
               <button type="button" class="btn btn-burger burger-arrowed static collapsed ml-2 d-flex d-xl-none" data-toggle-mobile="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
               <span class="bars"></span>
               </button>
-              <a class="navbar-brand text-white" routerLink="/dashboard/dashboard">
-              <img src="assets/images/logo-white.png" style="max-height: 44px;">
+              <a class="navbar-brand text-white" routerLink="/dashboard/dashboard" style="display: flex; align-items:center; padding:0;">
+               <img src="assets/images/logo-white.png" style="max-height: 44px; padding:2px 5px">
               </a>
-              <button type="button" class="btn btn-burger mr-2 d-none d-xl-flex" data-toggle="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
+              <button (click)="SideNavToggle()" type="button" class="btn btn-burger mr-2 d-none d-xl-flex" data-toggle="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
               <span class="bars"></span>
               </button>
            </div>

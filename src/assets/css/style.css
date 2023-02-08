@@ -310,3 +310,7 @@ table.dataTable>thead>tr>th:not(.sorting_disabled), table.dataTable>thead>tr>td:
     min-width: 100%;
 }
 }
+
+.main-content {
+    padding-top: 72px;
+}

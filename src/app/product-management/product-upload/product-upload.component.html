@@ -1,0 +1,49 @@
+<div class="body-container">
+    <!-- <app-header></app-header> -->
+    <div class="main-container">
+        <app-sidebar></app-sidebar>
+        <div role="main" class="main-content">
+            <div class="page-content container container-plus">
+                <section class="prof-head">
+                    <div class="container">
+                        <h2>Product Upload</h2>
+                    </div>
+                </section>
+                <section class="prof-form">
+                    <div class="container">
+                        <div class="prof-form-bdy">
+                            <div class="search-sec">
+                                <div class="row d-flex input-form">
+                                    <div class="col-6 col-lg-6">
+                                        <!-- <label for="">Upload file here</label> -->
+                                        <!-- <div class="custom-file mb-3">
+                                            <input type="file" accept=".xls,.xls" (change)="fileUplaod($event)"
+                                                class="custom-file-input" id="customFile" name="filename" required>
+                                            <label class="custom-file-label" for="customFile">{{uploadedFile?.name ?
+                                                uploadedFile?.name : 'Customer Upload'}}</label>
+                                        </div> -->
+                                        <div class="mb-3 mt-2">
+                                            <label for="product-file-upload" class="form-label">{{uploadedFile?.name ?
+                                                uploadedFile?.name : 'Product Upload'}}</label>
+                                            <input (change)="fileUplaod($event)" type="file" accept=".xls,.xml" class="form-control form-control-lg" id="product-file-upload" type="file">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <button class="btn btn-primary" type="button" (click)="submitForm()"><i
+                                                class="fa fa-paper-plane"></i> Submit</button>&nbsp;
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->

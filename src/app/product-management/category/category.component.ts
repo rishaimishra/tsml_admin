@@ -36,4 +36,37 @@ export class CategoryComponent implements OnInit {
       this._spiner.hide();
     })
   }
+
+  toggleStatus(catStatus:number, catId:number){
+    this._spiner.show();
+    if(catStatus === 1){
+      // console.log("Changed to inactive!");
+      this._category.inactiveCategory(catId).subscribe((res:any) => {
+        // If token has expire
+        if (res.status == 'Token has Expired') {
+          this._router.navigate(['']);
+          this._spiner.hide();
+          // return;
+        }
+        console.log(res.message)
+        this._spiner.hide();
+        // this._router.navigateByUrl('/product-management/product-list')
+        this.categoryList();
+      });
+    } else {
+      // console.log("changed to active");
+      this._category.activeCategory(catId).subscribe((res:any) => {
+        // If token has expire
+        if (res.status == 'Token has Expired') {
+          this._router.navigate(['']);
+          this._spiner.hide();
+          // return;
+        }
+        console.log(res.message)
+        this._spiner.hide();
+        // this._router.navigateByUrl('/product-management/product-list')
+        this.categoryList();
+      });
+    }
+  }
 }

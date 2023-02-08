@@ -8,12 +8,20 @@ import { AuthGuard } from '../auth/auth.guard';
 import { SetThresholdComponent } from './set-threshold/set-threshold.component';
 import { EditThresholdPriceComponent } from './edit-threshold-price/edit-threshold-price.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SecurityQuestionsComponent } from './security-questions/security-questions.component';
+import { EditSecurityQuestionComponent } from './edit-security-question/edit-security-question.component';
 
 
 const routes: Routes = [
   {
     path: 'threshold-limit', component: SetThresholdLimitsComponent, canActivate: [AuthGuard]
     
+  },
+  {
+    path: 'security-questions', component: SecurityQuestionsComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-security-question/:id', component: EditSecurityQuestionComponent, canActivate: [AuthGuard]
   },
   {
     path: 'set-threshold', component: SetThresholdComponent, canActivate: [AuthGuard]
@@ -27,7 +35,9 @@ const routes: Routes = [
   declarations: [
     SetThresholdLimitsComponent,
     SetThresholdComponent,
-    EditThresholdPriceComponent
+    EditThresholdPriceComponent,
+    SecurityQuestionsComponent,
+    EditSecurityQuestionComponent
   ],
   imports: [
     CommonModule,

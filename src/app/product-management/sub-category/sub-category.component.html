@@ -1,5 +1,5 @@
 <div class="body-container">
-    <app-header></app-header>
+    <!-- <app-header></app-header> -->
     <!-- /.navbar -->
     <div class="main-container">
        <app-sidebar></app-sidebar>
@@ -10,35 +10,35 @@
               <div class="col-sm-12">
                  <h4 class="pull-left page-title">Sub Category Management</h4>
                  <ol class="breadcrumb pull-right">
-                    <li> <a routerLink="/add-sub-category"><i class="far fa-plus-square"></i> Add Sub Category</a></li>
+                    <li> <a routerLink="/product-management/add-sub-category"><i class="far fa-plus-square"></i> Add Sub Category</a></li>
                  </ol>
               </div>
            </div>
-           <div class="row">
+           <div class="row mt-2">
               <div class="col-md-12">
                  <div class="panel panel-default">
                     <div class="panel-heading">
-                       <div class="row">
-                          <div class="col-sm-4">
+                       <div class="row input-form">
+                          <div class="col-sm-8">
                              <div class="form-group">
                                 <label for="category">Sub Category Name</label>
-                                <input type="text" placeholder="Sub Category Name" id="category" class="form-control">
+                                <input type="text" placeholder="&#xf002; Search by Sub Category Name" id="category" class="placeholder form-control" [(ngModel)]="searchText" (input)="filterNow()">
                              </div>
                           </div>
                           <div class="col-sm-4">
                              <div class="form-group">
                                 <label for="search">Search By Status</label>
-                                <select class="form-control rm06" name="status">
-                                   <option value="A">Active</option>
-                                   <option value="I">Inactive</option>
+                                <select class="form-control rm06" name="status" (input)="selectOption($event)">
+                                   <option value="1">Active</option>
+                                   <option value="2">Inactive</option>
                                 </select>
                              </div>
                           </div>
-                          <div class="col-sm-4">
-                             <div class="rm05">
+                          <!-- <div class="col-sm-4">
+                             <div class="rm05 mt-4">
                                 <button class="btn btn-primary btn-ser" type="submit">Search</button>
                              </div>
-                          </div>
+                          </div> -->
                        </div>
                     </div>
                     <div class="panel-body">
@@ -56,7 +56,8 @@
                                       </tr>
                                    </thead>
                                    <tbody>
-                                      <tr *ngFor="let subItem of subCtgryList | paginate: { itemsPerPage: 10, currentPage: p }">
+                                    <!-- <ng-container *ngIf="filteredList.length!==0"> -->
+                                      <tr *ngFor="let subItem of filteredList  | paginate: { itemsPerPage: 10, currentPage: p }">
                                          <td>{{subItem?.category_name}}</td>
                                          <td>{{subItem?.sub_category_name}}</td>
                                          <td>
@@ -73,7 +74,8 @@
                                             </a>
                                          </td>
                                       </tr>
-                                      
+                                    <!-- </ng-container> -->
+                                    <!-- <p style="text-align: center;" *ngIf="filteredList ==0">No Match Found</p>    -->
                                    </tbody>
                                 </table>
                                 <div class="col-12 text-right">

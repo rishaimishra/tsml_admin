@@ -1,0 +1,131 @@
+<div class="body-container">
+    <!-- <app-header></app-header> -->
+    <!-- /.navbar -->
+    <div class="main-container">
+      <app-sidebar></app-sidebar>
+      <!-- /.sidebar -->
+      <div role="main" class="main-content">
+        <div class="page-content container container-plus">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 class="pull-left page-title">Edit Category</h4>
+              <ol class="breadcrumb pull-right pointer">
+                <li (click)="goBack()">
+                  <a><i class="fa fa-angle-double-left"></i>Back</a>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="category">Product Name</label>
+                        <select  name="category" class="form-control" (change)="selectProductTitle($event)">
+                          <option value>Select Product Name</option>
+                          <option value="{{ prodItem?.product_id }}" *ngFor="let prodItem of productItems">
+                            {{ prodItem?.product_title }}
+                          </option>
+                          <!-- <option value="{{ctgryItem?.product_id}}" *ngFor="let ctgryItem of categoryItems">{{ctgryItem?.category_name}}</option> -->
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="category">Category Name</label>
+                        <select  name="category" class="form-control" (change)="selectCategoyName($event)">
+                          <option value>Select Category</option>
+                          <option value="{{ ctgryItem?.category_id }}" *ngFor="let ctgryItem of categoryItems">
+                            {{ ctgryItem?.category_name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="search">Status</label>
+                        <select (change)="selectStatus($event)" class="form-control rm06" name="status">
+                          <option value="" selected disabled>select</option>
+                          <option value="1">Active</option>
+                          <option value="2">Inactive</option>
+                        </select>
+                      </div>
+                    </div> -->
+                    
+  <!-- Image upload -->
+                    <!-- <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-2">
+                      <div class="form-group">
+                         <br>
+                         <div class="col-sm-6"></div>
+                         <img *ngIf="url" [src]="url" height="30">
+                         <div class="mb-2 w-100">
+                           <input (change)="onselectFile($event)" type="file" class="form-control form-control-lg w-100">
+                         </div>
+                      </div>
+                    </div> -->
+                    <div class="col-sm-12" style="width: 100%; margin-top: 2%;">
+                      <div class="row" >
+                         <br>
+                         <p *ngIf="!url">Choose Image File</p>
+                         <img *ngIf="url" [src]="url" height="30" style="margin:5px 0">
+                         <!-- <input type="file" (change)="onselectFile($event)"> -->
+                         <div class="mb-2 w-100" >
+                           <input style="width: 95%" (change)="onselectFile($event)" type="file" class="form-control form-control-lg w-100">
+                         </div>
+                      </div>
+                    </div>
+                    
+  
+                    <div class="col-sm-12 mt-2">
+                      <div class="form-group">
+                        <label for="category">Description</label>
+                        <textarea
+                          class="form-control h-75"
+                          [(ngModel)]="description"
+                          rows="4"
+                          placeholder="Ranked among the top-seven global chrome alloy producers, we are the leading manufacturers of High Carbon Ferro Chrome in India. We produce various grades of Ferro Chrome"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="mt-2">
+                        <button
+                          class="btn btn-primary btn-ser"
+                          (click)="saveCategory()"
+                          type="button"
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content -->
+        <footer class="footer d-none d-sm-block">
+          <div class="footer-inner bgc-white-tp1">
+            <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+              <span class="text-grey"
+                >© 2021 Tata Steel Mining Limited. All Rights Reserved.</span
+              >
+            </div>
+          </div>
+          <div class="footer-tools">
+            <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+              <i class="fa fa-angle-double-up mx-2px text-95"></i>
+            </a>
+          </div>
+        </footer>
+        <!-- footer -->
+      </div>
+    </div>
+  </div>
+  

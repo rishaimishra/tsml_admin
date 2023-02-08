@@ -1,0 +1,52 @@
+<div class="body-container">
+    <!-- /.navbar -->
+    <div class="main-container">
+       <app-sidebar></app-sidebar>
+       <!-- /.sidebar -->
+       <div role="main" class="main-content">
+          <div class="page-content container container-plus">
+             <div class="row">
+                <div class="col-sm-12">
+                   <h4 class="pull-left page-title">Edit Security Question</h4>
+                </div>
+             </div>
+             <div class="row mt-2">
+                <div class="col-md-12">
+                   <div class="panel panel-default">
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-sm-12">
+                               <div class="form-group">
+                                  <label for="security">Security Question</label>
+                                  <input type="text" [(ngModel)]="sq" placeholder="Enter Security Question" id="security" class="form-control">
+                               </div>
+                            </div>
+                           
+                            <div class="col-sm-12">
+                               <div class="mt-2">
+                                  <button [disabled]="!sq" class="btn btn-primary btn-ser" (click)="updateQuestion()" type="button">Update</button>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- content -->
+          <footer class="footer d-none d-sm-block">
+             <div class="footer-inner bgc-white-tp1">
+                <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                   <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+                </div>
+             </div>
+             <div class="footer-tools">
+                <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                <i class="fa fa-angle-double-up mx-2px text-95"></i>
+                </a>
+             </div>
+          </footer>
+          <!-- footer -->
+       </div>
+    </div>
+ </div>

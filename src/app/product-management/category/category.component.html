@@ -1,5 +1,5 @@
 <div class="body-container">
-    <app-header></app-header>
+    <!-- <app-header></app-header> -->
     <!-- /.navbar -->
     <div class="main-container">
        <app-sidebar></app-sidebar>
@@ -10,15 +10,15 @@
                 <div class="col-sm-12">
                    <h4 class="pull-left page-title">Category Management</h4>
                    <ol class="breadcrumb pull-right">
-                      <li> <a routerLink="/add-category"><i class="far fa-plus-square"></i> Add Category</a></li>
+                      <li> <a routerLink="/product-management/add-category"><i class="far fa-plus-square"></i> Add Category</a></li>
                    </ol>
                 </div>
              </div>
-             <div class="row">
+             <div class="row mt-2">
                 <div class="col-md-12">
                    <div class="panel panel-default">
                       <div class="panel-heading">
-                         <div class="row">
+                         <div class="row input-form">
                             <div class="col-sm-4">
                                <div class="form-group">
                                   <label for="category">Category Name</label>
@@ -35,7 +35,7 @@
                                </div>
                             </div>
                             <div class="col-sm-4">
-                               <div class="rm05">
+                               <div class="mt-4">
                                   <button class="btn btn-primary btn-ser" type="submit">Search</button>
                                </div>
                             </div>
@@ -51,6 +51,7 @@
                                            <th>Category</th>
                                            <th>Description</th>
                                            <th>Status</th>
+                                           <th>Change Status</th>
                                            <th>Action</th>
                                         </tr>
                                      </thead>
@@ -58,16 +59,24 @@
                                         <tr *ngFor="let ctgryItem of categoryItems">
                                            <td>{{ctgryItem?.category_name}}</td>
                                            <td>
-                                              <p class="table-dec">.........</p>
+                                              <p class="table-dec">{{ctgryItem?.category_desc}}</p>
                                            </td>
-                                           <td><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">....</span></td>
+                                           <!-- <td><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25"> -->
+                                             <td *ngIf="ctgryItem?.status == 1"><span class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">Active</span></td>
+                                             <td *ngIf="ctgryItem?.status == 2"><span class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">Inactive</span></td>
+                                           <!-- </span></td> -->
                                            <td>
-                                              <a class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                             <div class="form-check form-switch" style="height:50px">
+                                                <input style="width:30px; margin:auto auto" role="switch" (click)="toggleStatus(ctgryItem?.status, ctgryItem?.category_id)" type="checkbox" class="form-check-input" [checked]="ctgryItem?.status == 1">
+                                             </div>
+                                          </td>
+                                           <td>
+                                              <a routerLink="/product-management/edit-category/{{ctgryItem?.category_id}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                                               </a>
-                                              <a class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                              <!-- <a class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                                              </a>
+                                              </a> -->
                                            </td>
                                         </tr>
                                        

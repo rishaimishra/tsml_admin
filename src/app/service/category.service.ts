@@ -40,4 +40,11 @@ export class CategoryService {
   basicPriceOfProduct(url_paremter: any) {
     return this._http.post( this.BesUrl+ '/admin/get-product-basic-price', url_paremter);
   };
+  // https://beas.in/mje-shop/api/admin/inactive-category/2
+  activeCategory(catId:number){
+    return this._http.get( this.BesUrl+ '/admin/active-category/'+ catId);
+  }
+  inactiveCategory(catId:number){
+    return this._http.get( this.BesUrl+ '/admin/inactive-category/'+ catId);
+  }
 }
