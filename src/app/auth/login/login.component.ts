@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
 
   adminLoginForm: FormGroup;
   submitted: boolean = false;
+  token: string | undefined;
+  
+  public showPassword: boolean | undefined;
+  public showPasswordOnPress: boolean | undefined;
 
   constructor(private _fb: FormBuilder,
     private _auth: AuthService,
@@ -26,19 +30,36 @@ export class LoginComponent implements OnInit {
       email: ['',  [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: ['',Validators.required]
     })
+    this.token = undefined;
   }
   get f() { return this.adminLoginForm.controls; }
 
   ngOnInit(): void {
   }
+  
+  // send(form: NgForm): void {
+  //   if (form.invalid) {
+  //     for (const control of Object.keys(form.controls)) {
+  //       form.controls[control].markAsTouched();
+  //     }
+  //     return;
+  //   }
+  // };
 
   submitLogin() {
-    this._spinner.show();
+    // this.send(form);
     this.submitted = true;
+    // let captchaToken = `Token [${this.token}] generated`;
+    // console.log(captchaToken);
+    // let email = this.adminLoginForm.value['email'];
+    // if (this.token == undefined) {
+    //   return;
+    // }
     if (this.adminLoginForm.invalid) {
       this._spinner.hide();
       return;
     }
+    this._spinner.show();
     this._auth.adminLogin(this.adminLoginForm.value).subscribe((res: any) => {
       this._spinner.hide();
       if (res.success != false && res.status != 0) {

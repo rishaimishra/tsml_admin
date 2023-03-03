@@ -12,6 +12,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthIntercepto } from './service/auth.interceptor';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../environments/environment.prod';
+import { RECAPTCHA_SETTINGS,RecaptchaSettings } from 'ng-recaptcha'
 
 
 
@@ -31,13 +33,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ToastrModule.forRoot() ,
     NgxSpinnerModule.forRoot(),
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
 
   ],
   exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthIntercepto, multi: true},
-    Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+    Location, {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.recaptcha.siteKey,
+      } as RecaptchaSettings,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpointBase:'https://beas.in/mje-shop/api',
+  apiEndpointBase:'https://beas.in/tsml-shop/api',
 };
 
 /*
