@@ -83,10 +83,10 @@ export class AddFreightChargesComponent implements OnInit {
         // this.toater.success(res.result);
       })
     
-  }
+  };
   goBack() {
     this._location.back();
-  }
+  };
   getAllFreightCharges() {
     this._spinner.show();
     this._category.getfreightCharges().subscribe((res:any) => {
@@ -101,7 +101,7 @@ export class AddFreightChargesComponent implements OnInit {
     }, err => {
       console.log(err);
     })
-  }
+  };
   deleteFreight(id: any) {
     Swal.fire({
       title: 'Are you sure?',
@@ -134,7 +134,7 @@ export class AddFreightChargesComponent implements OnInit {
         })
       }
     })
-  }
+  };
   getState() {
     this.states = [
       {

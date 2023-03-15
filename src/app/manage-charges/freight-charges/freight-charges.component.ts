@@ -35,6 +35,7 @@ export class FreightChargesComponent implements OnInit {
       this._spinner.hide();
     }, err => {
       console.log(err);
+      this._spinner.hide();
     })
   }
   statusValue(event: any) {

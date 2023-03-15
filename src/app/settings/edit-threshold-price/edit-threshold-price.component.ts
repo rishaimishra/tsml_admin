@@ -60,7 +60,8 @@ export class EditThresholdPriceComponent implements OnInit {
       if (res.message == 'success.' && res.status == 1) {
         this.productList = res.result;
       }
-      if (res.status == 'Token has Expired') {
+      if (res.status == 'Token is Expired') {
+        localStorage.clear();
         this._router.navigate(['']);
       }
 
@@ -75,7 +76,6 @@ export class EditThresholdPriceComponent implements OnInit {
         this.editdataInfo = res.result;
         let pId = this.editdataInfo.cat_id;
         // this.selectCat(pId);
-        console.log('data',pId);
       }
     })
   }
@@ -140,10 +140,8 @@ export class EditThresholdPriceComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this._router.navigate(['/set-threshold-limit']);
-      } else {
-        console.log(res.message);
-      }
+        this._router.navigate(['/settings/threshold-limit']);
+      } 
     }, err => {
       console.log(err);
       this.loader.hide();

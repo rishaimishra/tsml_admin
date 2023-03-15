@@ -11,7 +11,7 @@
                    <div class="col-sm-12">
                       <h4 class="pull-left page-title">Set Threshold Limits</h4>
                       <ol class="breadcrumb pull-right">
-                         <li> <a href="#"><i class="fa fa-angle-double-left"></i> Back</a></li>
+                         <li class="pointer"> <a routerLink="/settings/threshold-limit"><i class="fa fa-angle-double-left"></i> Back</a></li>
                       </ol>
                    </div>
                 </div>
@@ -96,14 +96,14 @@
                                      <input type="number" placeholder=""  formControlName="CAM_Discount" id="" class="form-control" value="0">
                                   </div>
                                </div>
-                               <div class="col-sm-3">
+                               <!-- <div class="col-sm-3">
                                  <div class="form-group">
                                     <label for="">GST (%)</label>
                                     <input type="number" placeholder=""  formControlName="gst_per" id="" class="form-control" value="0">
                                  </div>
-                              </div>
+                              </div> -->
                                <div class="col-sm-12">
-                                  <div class="">
+                                  <div class="mt-3">
                                      <button type="button" (click)="saveThreshold()" class="btn btn-primary btn-ser" >Save</button>
                                   </div>
                                </div>

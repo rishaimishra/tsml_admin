@@ -39,7 +39,7 @@ export class SetThresholdComponent implements OnInit {
       Misc_Expense: [''],
       Interest_Rate: [''],
       CAM_Discount: [''],
-      gst_per: [''],
+      // gst_per: [''],
       Price_Premium_sing: ['']
     })
   }
@@ -49,7 +49,6 @@ export class SetThresholdComponent implements OnInit {
     this._categorie.productList().subscribe((res: any) => {
       this.loader.hide();
       if (res.message == 'success.' && res.status == 1) {
-        console.log(res);
         this.productList = res.result;
       }
       if (res.status == 'Token has Expired') {
@@ -79,10 +78,8 @@ export class SetThresholdComponent implements OnInit {
   };
   subCategori(event: any) {
     this.subCategorySize = event.target.value;
-    console.log('HH',this.subCategorySize);
     let apiUrl = '/admin/get-subcategory-size-byid/'+event.target.value;
     this._product.getMethod(apiUrl).subscribe((res:any) => {
-      console.log(res);
       if (res.status == 1 && res.message == 'success.') {
         this.sizes = res.result[0];
       }
@@ -104,8 +101,6 @@ export class SetThresholdComponent implements OnInit {
           'Price Components Added Successfully',
           'success'
         )
-      } else {
-        console.log(res.message);
       }
     }, err => {
       console.log(err);
