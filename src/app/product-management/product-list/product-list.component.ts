@@ -53,8 +53,6 @@ export class ProductListComponent implements OnInit {
   }
 
   filterNow(){
-    // console.log(this.searchText);
-    // console.log(this.catStatus)
     this.filteredList = [];
     if(this.searchText == "" && this.prodStatus=="1"){
       for(let prod of this.productItems){

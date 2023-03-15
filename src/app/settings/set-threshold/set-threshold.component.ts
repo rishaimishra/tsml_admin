@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CategoryService } from 'src/app/service/category.service';
@@ -22,6 +22,7 @@ export class SetThresholdComponent implements OnInit {
   subCategoriList: any = [];
   subCategorySize:any = [];
   sizes:any = [];
+  submited: boolean= false;
 
 
 
@@ -30,19 +31,22 @@ export class SetThresholdComponent implements OnInit {
     private _product: ProductsService, private _fb: FormBuilder) {
     this.setthresholdForm = this._fb.group({
       user_id: [''],
-      pro_id: [''],
-      cat_id: [''],
-      sub_cat_id: [''],
-      size: [''],
-      BPT_Price: [''],
-      Price_Premium: [''],
-      Misc_Expense: [''],
-      Interest_Rate: [''],
-      CAM_Discount: [''],
+      pro_id: ['', Validators.required],
+      cat_id: ['', Validators.required],
+      sub_cat_id: ['', Validators.required],
+      size: ['', Validators.required],
+      BPT_Price: ['', Validators.required],
+      Price_Premium: ['', Validators.required],
+      Misc_Expense: ['', Validators.required],
+      Interest_Rate: ['', Validators.required],
+      CAM_Discount: ['', Validators.required],
       // gst_per: [''],
-      Price_Premium_sing: ['']
+      Price_Premium_sing: ['', Validators.required]
     })
   }
+  get form () {
+    return this.setthresholdForm.controls;
+  };
 
   ngOnInit(): void {
     this.loader.show();
@@ -64,6 +68,7 @@ export class SetThresholdComponent implements OnInit {
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
       this.categoriList = res.result;
+      this.selectCat(this.productId);
     })
   };
 
@@ -74,6 +79,7 @@ export class SetThresholdComponent implements OnInit {
     this._categorie.getMethod(apiurl).subscribe((res: any) => {
       this.loader.hide();
       this.subCategoriList = res.result;
+      this.subCategori(this.subCategoriList)
     })
   };
   subCategori(event: any) {
@@ -88,6 +94,10 @@ export class SetThresholdComponent implements OnInit {
 
 
   saveThreshold() {
+    this.submited = true;
+    if(this.setthresholdForm.invalid) {
+      return;
+    }
     this.loader.show();
     this.setthresholdForm.value['pro_id'] = this.productId;
     this.setthresholdForm.value['cat_id'] = this.categorieId;

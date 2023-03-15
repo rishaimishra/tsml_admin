@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -37,8 +38,8 @@ export class ProductsService {
     return this._http.post(this.BesUrl + '/admin/store-pro-price', reqParameter);
   };
 
-  getthresholdList() {
-    return this._http.get(this.BesUrl + '/admin/get-threshold-price-admin');
+  getthresholdList(data:any): Observable<any> {
+    return this._http.post(this.BesUrl + '/admin/get-threshold-price-admin', data);
   };
 
   updateThreshold(reqParameter: any) {

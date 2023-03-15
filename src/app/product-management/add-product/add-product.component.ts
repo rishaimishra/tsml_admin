@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit {
     private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    
   }
 
   goBack() {

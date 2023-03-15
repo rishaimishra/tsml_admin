@@ -24,7 +24,8 @@
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Product Name</label>
-                                    <select class="form-control rm06" (change)="selectProduct($event)" name="status">
+                                    <select class="form-control rm06" (change)="selectProduct($event)" formControlName="pro_id" 
+                                    [ngClass]="{ 'is-invalid': submited && form['pro_id'].errors }" name="status">
                                        <option value="">--Select--</option>
                                        <option value="{{proItem.product_id}}" *ngFor="let proItem of productList">{{proItem.product_title}}</option>
                                     </select>
@@ -33,7 +34,8 @@
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Categories</label>
-                                    <select class="form-control rm06" (change)="selectCat($event)" name="status">
+                                    <select class="form-control rm06" (change)="selectCat($event)" formControlName="cat_id"
+                                    [ngClass]="{ 'is-invalid': submited && form['pro_id'].errors }" name="status">
                                        <option value="">--Select--</option>
                                        <option value="{{catItem.category_id}}" *ngFor="let catItem of categoriList">{{catItem.category_name}}</option>
                                     </select>
@@ -42,7 +44,8 @@
                                <div class="col-sm-4">
                                  <div class="form-group">
                                     <label for="category">Sub Category</label>
-                                    <select class="form-control rm06" (change)="subCategori($event)" name="status">
+                                    <select class="form-control rm06" (change)="subCategori($event)" formControlName="sub_cat_id"
+                                    [ngClass]="{ 'is-invalid': submited && form['sub_cat_id'].errors }" name="status">
                                        <option value="">--Select--</option>
                                        <option value="{{item.sub_category_id}}" *ngFor="let item of subCategoriList">{{item.sub_category_name}}</option>
                                     </select>
@@ -51,7 +54,8 @@
                                <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="category">Sizes Offered</label>
-                                     <select class="form-control rm06" name="status" formControlName="size">
+                                     <select class="form-control rm06" name="status" formControlName="size"
+                                     [ngClass]="{ 'is-invalid': submited && form['size'].errors }">
                                        <option value="" selected>--Select--</option>
                                         <option value="{{size}}" *ngFor="let size of sizes['product_size']">{{size}}</option>
                                      </select>
@@ -60,7 +64,8 @@
                                <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">Basic Price</label>
-                                     <input type="number" placeholder="" formControlName="BPT_Price" id="" class="form-control" value="0">
+                                     <input type="number" placeholder="" formControlName="BPT_Price"
+                                     [ngClass]="{ 'is-invalid': submited && form['BPT_Price'].errors }" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-3">
@@ -68,7 +73,8 @@
                                   <div class="form-group">
                                      <label for="">Quality Premium</label>
                                      <div class="twoFrm">
-                                     <select class="form-control rm06" formControlName="Price_Premium_sing" name="status">
+                                     <select class="form-control rm06" formControlName="Price_Premium_sing"
+                                     [ngClass]="{ 'is-invalid': submited && form['Price_Premium_sing'].errors }" name="status">
                                        <option value="" selected>sel..</option>
                                        <option value="0" >0</option>
                                        <option value="+" >+</option>
@@ -81,19 +87,19 @@
                                <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">Misc Expense</label>
-                                     <input type="number" placeholder="" formControlName="Misc_Expense" id="" class="form-control" value="0">
+                                     <input type="number" formControlName="Misc_Expense" [ngClass]="{ 'is-invalid': submited && form['Misc_Expense'].errors }" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">Interest Rate ( % )</label>
-                                     <input type="number" placeholder="" id="" formControlName="Interest_Rate" class="form-control" value="0">
+                                     <input type="number"  formControlName="Interest_Rate" [ngClass]="{ 'is-invalid': submited && form['Interest_Rate'].errors }" class="form-control" value="0">
                                   </div>
                                </div>
                                <div class="col-sm-3">
                                   <div class="form-group">
                                      <label for="">KAM Discount</label>
-                                     <input type="number" placeholder=""  formControlName="CAM_Discount" id="" class="form-control" value="0">
+                                     <input type="number"  formControlName="CAM_Discount" [ngClass]="{ 'is-invalid': submited && form['CAM_Discount'].errors }" class="form-control" value="0">
                                   </div>
                                </div>
                                <!-- <div class="col-sm-3">

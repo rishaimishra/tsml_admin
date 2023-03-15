@@ -74,11 +74,11 @@ export class EditThresholdPriceComponent implements OnInit {
     this._product.getMethod(apiUrl).subscribe((res:any) => {
       if (res.status == 1 && res.message == 'success.') {
         this.editdataInfo = res.result;
-        let pId = this.editdataInfo.cat_id;
-        // this.selectCat(pId);
+        console.log(this.editdataInfo);
       }
     })
-  }
+  };
+
   selectProduct(event: any) {
     this.loader.show();
     this.productId = event.target.value;
@@ -102,6 +102,7 @@ export class EditThresholdPriceComponent implements OnInit {
     this.subCategoriList = event.target.value;
 
   };
+
   getPrice(event: any) {
     let size = event.target.value;
     this.productSize = event.target.value;

@@ -1,111 +1,146 @@
 <div class="body-container">
-    <!-- <app-header></app-header> -->
-    <!-- /.navbar -->
-    <div class="main-container">
-       <app-sidebar></app-sidebar>
-       <!-- /.sidebar -->
-       <div role="main" class="main-content">
-          <div class="page-content container container-plus">
-             <div class="row">
-                <div class="col-sm-12">
-                   <h4 class="pull-left page-title">Threshold Limits</h4>
-                   <ol class="breadcrumb pull-right tabclass" routerLink="/settings/set-threshold">
-                      <li> <a><i class="far fa-plus-square"></i> Set Threshold Limits</a></li>
-                   </ol>
-                </div>
-             </div>
-             <div class="row">
-                <div class="col-md-12">
-                   <div class="panel panel-default">
-                      <div class="panel-heading">
-                         <div class="row">
-                            <div class="col-sm-4">
-                               <div class="form-group">
-                                  <label for="category">Product Name</label>
-                                  <input type="text" placeholder="Product Name" id="category" class="form-control">
-                               </div>
-                            </div>
-                            <div class="col-sm-4">
-                               <div class="form-group">
-                                  <label for="search">Search By Status</label>
-                                  <select class="form-control rm06" name="status">
-                                     <option value="A">Active</option>
-                                     <option value="I">Inactive</option>
-                                  </select>
-                               </div>
-                            </div>
-                            <div class="col-sm-4">
-                               <div class="mt-4">
-                                  <button class="btn btn-primary btn-ser" type="submit">Search</button>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="panel-body">
-                         <div class="row">
-                            <div class="col-md-12">
-                               <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                  <thead>
-                                     <tr>
-                                        <th>Product Name</th>
-                                        <th>Category</th>
-                                        <th>Sub Category</th>
-                                        <th>Sizes Offered</th>
-                                        <th>Basic Price</th>
-                                        <th>Price Premium (%)</th>
-                                        <th>Prod Premium/Disc (%)</th>
-                                        <th>Interest Credit (%)</th>
-                                        <th>Special Discount (%)</th>
-                                        <th>Action</th>
-                                     </tr>
-                                  </thead>
-                                  <tbody>
-                                     <tr *ngFor="let priceItem of thresholdItems | paginate: { itemsPerPage: 10, currentPage: p }">
-                                        <td>{{priceItem.product_title}}</td>
-                                        <td>{{priceItem.category_name}}</td>
-                                        <td>{{priceItem.sub_category_name}}</td>
-                                        <td>{{priceItem.size}}</td>
-                                        <td>{{priceItem.basic_price}}</td>
-                                        <td>{{priceItem.Price_Premium}}</td>
-                                        <td>{{priceItem.Misc_Expense}}</td>
-                                        <td>{{priceItem.Interest_Rate}}</td>
-                                        <td>{{priceItem.CAM_Discount}}</td>
-                                        <td>
-                                           <a [routerLink]="['/settings/edit-threshold',priceItem.threshold]" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                           </a>
-                                           <a href="#" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                           </a>
-                                        </td>
-                                     </tr>
-                                     
-                                  </tbody>
-                               </table>
-                               <div class="col-12 text-right">
+   <!-- <app-header></app-header> -->
+   <!-- /.navbar -->
+   <div class="main-container">
+      <app-sidebar></app-sidebar>
+      <!-- /.sidebar -->
+      <div role="main" class="main-content">
+         <div class="page-content container container-plus">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h4 class="pull-left page-title">Threshold Limits</h4>
+                  <ol class="breadcrumb pull-right tabclass" routerLink="/settings/set-threshold">
+                     <li> <a><i class="far fa-plus-square"></i> Set Threshold Limits</a></li>
+                  </ol>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="panel panel-default">
+                     <div class="panel-heading">
+                        <form [formGroup]="searchForm">
+                        <div class="row">
+                           <div class="col-sm-4">
+                              <div class="form-group">
+                                 <label for="category">Product</label>
+                                 
+                                 <select class="form-control rm06" (change)="selectCate($event)" formControlName="pro_id" 
+                                 [ngClass]="{ 'is-invalid': submited && form['pro_id'].errors }" name="status">
+                                    <option value="">--Select--</option>
+                                    <option value="{{item?.product_id}}" *ngFor="let item of product">
+                                       {{item?.product_title}}</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-sm-4">
+                              <div class="form-group">
+                                 <label for="category">Category</label>
+                                 <select class="form-control rm06" formControlName="catid" (change)="selectSubCat($event)"
+                                 [ngClass]="{ 'is-invalid': submited && form['catid'].errors }"  name="status">
+                                    <option value="">--Select--</option>
+                                    <option value="{{catItem?.category_id}}" *ngFor="let catItem of categoriList">{{catItem.category_name}}</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-sm-4">
+                              <div class="form-group">
+                                 <label for="category">Sub-Category</label>
+                                 <select class="form-control rm06" formControlName="subcatid"
+                                 [ngClass]="{ 'is-invalid': submited && form['subcatid'].errors }"  name="status">
+                                    <option value="">--Select--</option>
+                                    <option value="{{item.sub_category_id}}" *ngFor="let item of subCategoriList">{{item.sub_category_name}}</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-sm-4 mt-2">
+                              <div class="form-group">
+                                 <label for="search">Search By Status</label>
+                                 <select class="form-control rm06" formControlName="status" id="status_chk"
+                                 [ngClass]="{ 'is-invalid': submited && form['status'].errors }" name="status">
+                                    <option value="">--Select--</option>
+                                    <option value="1">Active</option>
+                                    <option value="2">Inactive</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-sm-4 mt-2">
+                              <div class="mt-4">
+                                 <button class="btn btn-primary btn-ser" (click)="searchBy()"
+                                    type="submit">Search</button>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                     </div>
+                     <div class="panel-body">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                 <thead>
+                                    <tr>
+                                       <th>Product Name</th>
+                                       <th>Category</th>
+                                       <th>Sub Category</th>
+                                       <th>Sizes Offered</th>
+                                       <th>Basic Price</th>
+                                       <th>Price Premium</th>
+                                       <th>Miscellaneous Cost</th>
+                                       <th>Proposed Price Adjustment</th>
+                                       <th>Interest Credit (%)</th>
+                                       <th>Action</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <ng-container *ngIf="thresholdItems?.length > 0;">
+                                       <tr
+                                          *ngFor="let priceItem of thresholdItems | paginate: { itemsPerPage: 10, currentPage: p }">
+                                          <td>{{priceItem.product_title}}</td>
+                                          <td>{{priceItem.category_name}}</td>
+                                          <td>{{priceItem.sub_category_name}}</td>
+                                          <td>{{priceItem.size}}</td>
+                                          <td>{{priceItem.basic_price}}</td>
+                                          <td>{{priceItem.Price_Premium}}</td>
+                                          <td>{{priceItem.Misc_Expense}}</td>
+                                          <td>{{priceItem.CAM_Discount}}</td>
+                                          <td>{{priceItem.Interest_Rate}}</td>
+                                          <td>
+                                             <a [routerLink]="['/settings/edit-threshold',priceItem.threshold]"
+                                                class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                             </a>
+                                             <a href="javascript:void(0)"
+                                                class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                             </a>
+                                          </td>
+                                       </tr>
+                                    </ng-container>
+                                 </tbody>
+                              </table>
+                              <div class="col-12 text-right" *ngIf="thresholdItems?.length > 0">
                                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-          <!-- content -->
-          <footer class="footer d-none d-sm-block">
-             <div class="footer-inner bgc-white-tp1">
-                <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
-                   <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
-                </div>
-             </div>
-             <div class="footer-tools">
-                <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
-                <i class="fa fa-angle-double-up mx-2px text-95"></i>
-                </a>
-             </div>
-          </footer>
-          <!-- footer -->
-       </div>
-    </div>
- </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- content -->
+         <footer class="footer d-none d-sm-block">
+            <div class="footer-inner bgc-white-tp1">
+               <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
+                  <span class="text-grey">© 2021 Tata Steel Mining Limited. All Rights Reserved.</span>
+               </div>
+            </div>
+            <div class="footer-tools">
+               <a href="#" class="btn-scroll-up btn btn-dark mb-2 mr-2">
+                  <i class="fa fa-angle-double-up mx-2px text-95"></i>
+               </a>
+            </div>
+         </footer>
+         <!-- footer -->
+      </div>
+   </div>
+</div>

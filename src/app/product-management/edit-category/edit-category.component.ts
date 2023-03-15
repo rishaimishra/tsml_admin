@@ -49,14 +49,12 @@ export class EditCategoryComponent implements OnInit {
   categoryList(){
     this._category.getCatetoryList().subscribe((data:any)=>{
       this.categoryItems=data.result;
-      console.log(this.categoryItems);
         });
   }
 
   ProductList() {
     this._product.getProductList().subscribe((data:any)=>{
       this.productItems = data.result;
-      console.log(this.productItems);
         });
       }
 
