@@ -26,7 +26,7 @@ export class AddFreightChargesComponent implements OnInit {
   constructor(private _category: CategoryService,
      private _product: ProductsService, private _router: Router,
     private _spinner: NgxSpinnerService, private toater: ToastrService,
-    private _location: Location) { }
+    private _location: Location, private _toaster: ToastrService) { }
 
   ngOnInit(): void {
     this.getAllFreightCharges();
@@ -55,7 +55,13 @@ export class AddFreightChargesComponent implements OnInit {
       "freight_charges": this.freightCharge,
       "status": this.status,
     };
-
+    console.log(freightReq);
+    if(freightReq.destation_location == undefined || freightReq.freight_charges == undefined || 
+      freightReq.pickup_from == undefined || freightReq.pickup_location == undefined || freightReq.status == undefined) {
+        this._toaster.error('All fields are required !', 'Sorry');
+        this._spinner.hide();
+        return;
+      }
       this._product.storeFrieght(freightReq).subscribe((res: any) => {
         this._spinner.hide();
         if(res.message == 'New freights added successfully') {

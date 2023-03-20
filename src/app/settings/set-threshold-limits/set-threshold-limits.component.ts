@@ -5,6 +5,8 @@ import { ProductsService } from 'src/app/service/products.service';
 import * as $ from 'jquery';
 import { CategoryService } from 'src/app/service/category.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SettingsService } from 'src/app/service/settings.service';
+import {environment} from 'src/environments/environment.prod';
 
 
 @Component({
@@ -24,10 +26,11 @@ export class SetThresholdLimitsComponent implements OnInit {
   categoriList:any = [];
   searchForm: FormGroup;
   submited: boolean = false;
+  excelExp = environment.apiEndpointBase;
 
   constructor(private _products: ProductsService,
     private loader: NgxSpinnerService, private _router: Router,
-    private _categorie: CategoryService,
+    private _categorie: CategoryService, private _setti: SettingsService,
     private _fb: FormBuilder) 
     { 
       this.searchForm = this._fb.group({
@@ -107,5 +110,6 @@ export class SetThresholdLimitsComponent implements OnInit {
       console.log(err);
       this.loader.hide();
     })
-  }
+  };
+
 }

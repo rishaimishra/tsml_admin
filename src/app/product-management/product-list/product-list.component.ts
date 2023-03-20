@@ -27,18 +27,19 @@ export class ProductListComponent implements OnInit {
 
   productList() {
     throw new Error('Method not implemented.');
-  }
+  };
 
   selectOption(event:any){
     this.prodStatus = event.target.value;
     this.filterNow()
-  }
+  };
 
   ProductList() {
     this._spiner.show();
     this. _product.getProductList().subscribe((res: any) => {
       if (res.status == 1) {
         this.productItems = res.result;
+        console.log(this.productItems);
         this._spiner.hide();
         this.filterNow();
       }
@@ -50,7 +51,7 @@ export class ProductListComponent implements OnInit {
       console.log(err);
       this._spiner.hide();
     })
-  }
+  };
 
   filterNow(){
     this.filteredList = [];
@@ -76,14 +77,12 @@ export class ProductListComponent implements OnInit {
       }
     }
     console.log(this.filteredList.length)
-  }
+  };
 
 
   toggleStatus(currentProductStatus:number, prodId:number){
-    // console.log(currentProductStatus, prodId)
     this._spiner.show();
     if(currentProductStatus === 1){
-      // console.log("Changed to inactive!");
       this._product.inactiveProduct(prodId).subscribe((res:any) => {
         if (res.status == 'Token has Expired') {
           this._router.navigate(['']);
@@ -92,7 +91,6 @@ export class ProductListComponent implements OnInit {
         }
         console.log(res.message)
         this._spiner.hide();
-        // this._router.navigateByUrl('/product-management/product-list')
         this.ProductList();
       });
     } else {
@@ -103,19 +101,11 @@ export class ProductListComponent implements OnInit {
           this._spiner.hide();
           return;
         }
-        // console.log(res.message)
         this._spiner.hide();
-        // this._router.navigateByUrl('/product-management/product-list')
         this.ProductList();
       });
     }
-  }
-
-  // deleteProduct(id: any) {
-  //   if(confirm('Do u want to delete this product')){
-      
-  //   }
-  //  }
+  };
 
 
   EditProduct(product_id:any)

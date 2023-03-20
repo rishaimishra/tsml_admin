@@ -37,11 +37,12 @@ export class FreightChargesComponent implements OnInit {
       console.log(err);
       this._spinner.hide();
     })
-  }
+  };
+
   statusValue(event: any) {
     this.status = event.target.value;
-    console.log(this.status);
-  }
+  };
+
   frieghtChargeFilter() {
     this._spinner.show();
     var url = '/admin/get-freights?pickupfrom' + '=' + this.pickupValue + '&' + 'status' + '=' + this.status;

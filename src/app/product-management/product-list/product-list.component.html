@@ -55,7 +55,7 @@
                                         </tr>
                                      </thead>
                                      <tbody>
-                                         <tr *ngFor="let prodItem of filteredList  | paginate: { itemsPerPage: 10, currentPage: p }" > 
+                                         <tr *ngFor="let prodItem of productItems  | paginate: { itemsPerPage: 10, currentPage: p }" > 
                                            <td>{{prodItem?.product_title}}</td>  
                                            <td>
                                               <p class="table-dec">{{prodItem?.product_desc}}</p>
@@ -85,7 +85,7 @@
                                        
                                      </tbody>
                                   </table>
-                                  <div class="col-12 text-right">
+                                  <div class="col-12 text-right" *ngIf="productItems?.length > 5">
                                     <pagination-controls (pageChange)="p = $event"></pagination-controls>
                                   </div>
                                </div>

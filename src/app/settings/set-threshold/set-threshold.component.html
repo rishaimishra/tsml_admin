@@ -7,13 +7,22 @@
           <!-- /.sidebar -->
           <div role="main" class="main-content">
              <div class="page-content container container-plus">
-                <div class="row">
+                <div class="row mb-3">
                    <div class="col-sm-12">
                       <h4 class="pull-left page-title">Set Threshold Limits</h4>
                       <ol class="breadcrumb pull-right">
                          <li class="pointer"> <a routerLink="/settings/threshold-limit"><i class="fa fa-angle-double-left"></i> Back</a></li>
                       </ol>
                    </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                     <div class="mb-3 mt-2">
+                        <input accept=".xlsx,.xml," (change)="selectFile($event)" class="form-control form-control-lg" id="custom-file-prod" name="filename" type="file" required>
+                    </div>
+                  </div>
+                  <div class="col-6 mt-2"><button (click)="uploadXcl()" class="btn btn-primary mr-10">Submit</button>
+                     <a href="assets/images/sample_price.xlsx" target="_blank" class="btn btn-primary">Download sample</a></div>
                 </div>
                 <form [formGroup]="setthresholdForm">
                 <div class="row">
@@ -108,7 +117,7 @@
                                     <input type="number" placeholder=""  formControlName="gst_per" id="" class="form-control" value="0">
                                  </div>
                               </div> -->
-                               <div class="col-sm-12">
+                               <div class="col-sm-3 mt-2">
                                   <div class="mt-3">
                                      <button type="button" (click)="saveThreshold()" class="btn btn-primary btn-ser" >Save</button>
                                   </div>

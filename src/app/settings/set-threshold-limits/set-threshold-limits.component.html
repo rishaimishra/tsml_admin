@@ -6,7 +6,7 @@
       <!-- /.sidebar -->
       <div role="main" class="main-content">
          <div class="page-content container container-plus">
-            <div class="row">
+            <div class="row mb-3">
                <div class="col-sm-12">
                   <h4 class="pull-left page-title">Threshold Limits</h4>
                   <ol class="breadcrumb pull-right tabclass" routerLink="/settings/set-threshold">
@@ -75,6 +75,9 @@
                      <div class="panel-body">
                         <div class="row">
                            <div class="col-md-12">
+                              <div class="text-right mb-1">
+                                 <a class="btn btn-warning btn-sm" [href]="excelExp+'/export-excel-threshold-price-admin'" target="_blank">Export as excel <i class="fa fa-cloud-download" aria-hidden="true"></i></a>
+                              </div>
                               <table id="example" class="table table-striped table-bordered" style="width:100%">
                                  <thead>
                                     <tr>

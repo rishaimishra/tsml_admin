@@ -13,17 +13,17 @@
              <div class="row mt-2">
                 <div class="col-md-12">
                    <div class="panel panel-default">
-                      <div class="panel-body">
+                      <div class="panel-body py-5">
                          <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-10">
                                <div class="form-group">
                                   <label for="security">Security Question</label>
                                   <input type="text" [(ngModel)]="sq" placeholder="Enter Security Question" id="security" class="form-control">
                                </div>
                             </div>
                            
-                            <div class="col-sm-12">
-                               <div class="mt-2">
+                            <div class="col-sm-2">
+                               <div class="mt-4">
                                   <button [disabled]="!sq" class="btn btn-primary btn-ser" (click)="updateQuestion()" type="button">Update</button>
                                </div>
                             </div>
